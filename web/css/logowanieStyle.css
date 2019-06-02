@@ -1,0 +1,73 @@
+body{
+    background: lightgray; 
+    padding-top: 50px;
+}
+.container{
+    width: 406px;
+    max-width: 406px;
+    margin: 0 auto;
+}
+
+#login{
+    padding: 0px 25px 25px; 
+    background: lightblue;  
+    box-shadow: 
+            0px 0px 5px rgba(255,255,255,0.4),
+            0px 4px 20px rgba(0,0,0,0.33);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: table;
+    position: static; 
+}
+#login.header{
+    margin-bottom: 20px;
+    
+}
+#login .header h2{
+color: #0c0c0c;
+font-size: 30px;
+font-weight: bold;
+margin-bottom: 5px;
+text-align: center;
+
+}
+#login .header h3{
+    color: #181717;
+    margin-bottom: 1px;
+}
+#login .header p{
+    color:#1a4079;
+    font-size: .875rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+#login .inputs{
+    margin-top: 22px;
+}
+input:-moz-placeholder{
+    color: #c9d3db;
+}
+
+input ::-webkit-input-placeholder {
+    color: #c9d3db;
+}
+
+#login .inputs input[type=login], input[type=password]{
+    padding: 12px 10px;
+    width: 350px;
+    margin-bottom: 20px;
+    clear: both;
+} 
+#login .inputs input[type=login]:focus, input[type=password]:focus{
+background: #b9b8b8;
+}
+#login .bottom{
+    padding: 12px 10px;
+    margin-bottom: 20px;
+    width: 374px;
+    font-size: 15px;
+}
+#login .bottom:focus{
+    background: rgb(39, 228, 33);
+}
