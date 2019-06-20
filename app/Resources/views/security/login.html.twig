@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container"> 
+    <form id="login" action="{{ path('login') }}" method="post">
+        <div class="header">
+            <h2>Logowanie do CRM</h2>
+            <br>
+            <h3>Login</h3>
+            <p>Uzupełnij poniższe pola</p>
+        </div>
+        {% if error %}
+            <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="sep"></div>
+        <div class="inputs">
+            <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Wpisz swój login" autofocus/>
+             <br/>
+            <input type="password" id="password" name="_password" placeholder="Hasło"/>
+             <br/>
+
+            {#
+                If you want to control the URL the user
+                is redirected to on success (more details below)
+                <input type="hidden" name="_target_path" value="/account"/>
+            #}
+
+            <button type="submit" class="bottom">Zaloguj się</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset( '../css/logowanieStyle.css' ) }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+

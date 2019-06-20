@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class DefaultController extends Controller
 {
@@ -19,12 +21,20 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
-    
+
     /**
-     * @Route("/admin", name="admin")
+     * @Route("/register", name="register")
      */
-    public function adminAction()
+    public function registerAction(UserPasswordEncoderInterface $encoder)
     {
-        return new Response('<html><body>Admin page!</body></html>');
+        // whatever *your* User object is
+        $user = new AppBundle\Entity\User();
+        $plainPassword = 'admin';
+        $encoded = $encoder->encodePassword($user, $plainPassword);
+
+        $user->setPassword($encoded);
+
+        dump($user);
+        exit;
     }
 }
