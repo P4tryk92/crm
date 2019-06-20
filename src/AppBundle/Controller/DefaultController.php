@@ -21,15 +21,6 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
     }
-    
-    /**
-     * @Route("/admin", name="admin")
-     */
-    public function adminAction()
-    {   
-        return $this->render('login/loginForm.html.twig');
-        // return new Response('<html><body>Admin page!</body></html>');
-    }
 
     /**
      * @Route("/register", name="register")
