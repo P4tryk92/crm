@@ -1,0 +1,33 @@
+AppBundle\Entity\User:
+  type: entity
+  repositoryClass: AppBundle\Repository\UserRepository
+  table: user
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    username:
+      type: string
+      length: 25
+      unique: true
+    firstName:
+      type: string
+      length: 25
+    lastName:
+      type: string
+      length: 25
+    password:
+      type: string
+      length: 64
+    email:
+      type: string
+      length: 254
+      unique: true
+    pin:
+      type: string
+      length: 11
+      unique: true
+    isActive:
+      type: boolean
+        

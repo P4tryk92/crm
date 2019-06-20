@@ -1,27 +1,36 @@
 
 security:
-    providers:
-        in_memory:
-            memory: 
-                users:
-                    ryan:
-                        password: ryan
-                        roles: 'ROLE_USER'
-                    admin:
-                        password: admin
-                        roles: 'ROLE_ADMIN'
 
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
+    providers:
+        user:
+            entity:
+                class: AppBundle:User
+                property: username
+                # if you're using multiple entity managers
+                # manager_name: customer
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+            
         main:
+            provider: user
             anonymous: ~
-            http_basic: ~
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+                target: login
+            # remember_me:
+            #     key: '%secret%'
+            #     lifetime: 604800 # 1 week in seconds
+            #     path: /
 
     access_control:
         # require ROLE_ADMIN for /admin*
