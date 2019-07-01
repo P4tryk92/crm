@@ -23,7 +23,8 @@ AppBundle\Entity\User:
     email:
       type: string
       length: 254
-      unique: true
+      # unique: true
+      nullable: true
     pin:
       type: string
       length: 11

@@ -4,7 +4,11 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\User;
+use AppBundle\Form\UserEditType;
+use AppBundle\Form\UserNewType;
 
 class SecurityController extends Controller
 {
@@ -20,6 +24,67 @@ class SecurityController extends Controller
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
+        ]);
+    }
+
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('security/index.html.twig', [
+            'users' => $users,
+        ]);
+    }
+
+    public function editAction($id, Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneById($id);
+
+        $form = $this->createForm(UserEditType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $plainPassword = $user->getPassword();
+            $encoded = $encoder->encodePassword($user, $plainPassword);
+            $user->setPassword($encoded);
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('homepage'); 
+        }
+
+        return $this->render('security/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    public function newAction(Request $request, UserPasswordEncoderInterface $encoder)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = new User();
+
+        $form = $this->createForm(UserNewType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $username = strtolower($user->getFirstName()[0] . $user->getLastName());
+            $plainPassword = substr($user->getPin(), -4);
+            $encoded = $encoder->encodePassword($user, $plainPassword);
+            
+            $user->setPassword($encoded);
+            $user->setUsername($username);
+            $user->setIsActive(true);
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('homepage'); 
+        }
+
+        return $this->render('security/edit.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
