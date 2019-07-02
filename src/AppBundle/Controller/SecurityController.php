@@ -46,15 +46,24 @@ class SecurityController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $plainPassword = $user->getPassword();
-            $encoded = $encoder->encodePassword($user, $plainPassword);
-            $user->setPassword($encoded);
-            $em->persist($user);
-            $em->flush();
-
+            $oldPassword = $form->get('oldPassword')->getData();
+            $isPasswordValid = $encoder->isPasswordValid($user, $oldPassword);
+            
+            if ($isPasswordValid) {
+                $plainPassword = $form->get('password')->getData();
+                $encoded = $encoder->encodePassword($user, $plainPassword);
+                $user->setPassword($encoded);
+                $em->persist($user);
+                $em->flush();
+            } else {
+                $error = 'Nieprawidłowe hasło';
+                return $this->render('security/edit.html.twig', [
+                    'form'  => $form->createView(),
+                    'error' => $error,
+                ]);
+            }
             return $this->redirectToRoute('homepage'); 
         }
-
         return $this->render('security/edit.html.twig', [
             'form' => $form->createView(),
         ]);

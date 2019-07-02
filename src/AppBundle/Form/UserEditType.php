@@ -22,10 +22,11 @@ class UserEditType extends AbstractType
             ->add('lastname', TextType::class, ['label' => 'Nazwisko', 'attr' => ['class' => 'form-style']])
             ->add('email', EmailType::class, ['label' => 'Email', 'required' => false, 'attr' => ['class' => 'form-style']])
             ->add('pin', NumberType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-style'], 'constraints' => [new Length(['min' => 11, 'max' => 11])]])
-            // ->add('oldPassword', PasswordType::class, ['label' => 'Stare hasło', 'mapped' => false, 'attr' => ['class' => 'form-style']])
+            ->add('oldPassword', PasswordType::class, ['label' => 'Stare hasło', 'mapped' => false, 'attr' => ['class' => 'form-style']])
             ->add('password', PasswordType::class, ['label' => 'Nowe hasło', 'mapped' => false, 'attr' => ['class' => 'form-style']])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'mapped' => false,
                 'first_options'  => ['label' => 'Nowe hasło'],
                 'second_options' => ['label' => 'Powtórz hasło'],
                 'invalid_message' => 'Podane hasła się różnią',
