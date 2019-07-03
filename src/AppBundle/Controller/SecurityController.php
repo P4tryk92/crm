@@ -55,14 +55,16 @@ class SecurityController extends Controller
                 $user->setPassword($encoded);
                 $em->persist($user);
                 $em->flush();
+
+                return $this->redirectToRoute('homepage'); 
             } else {
                 $error = 'Nieprawidłowe hasło';
+
                 return $this->render('security/edit.html.twig', [
                     'form'  => $form->createView(),
                     'error' => $error,
                 ]);
             }
-            return $this->redirectToRoute('homepage'); 
         }
         return $this->render('security/edit.html.twig', [
             'form' => $form->createView(),
