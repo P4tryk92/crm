@@ -9,7 +9,12 @@
     <body>
         {% block header %}
             <header>
-                <a href="{{ url('logout') }}">Wyloguj</a>
+                <nav>
+                    <a href="{{ url('homepage') }}">Home</a>
+                    <a href="{{ url('lead_index') }}">Klienci</a>
+                    <a href="{{ url('user_index') }}">Ustawienia</a>
+                    <a href="{{ url('logout') }}">Wyloguj</a>
+                </nav>
             </header>
         {% endblock %}
 

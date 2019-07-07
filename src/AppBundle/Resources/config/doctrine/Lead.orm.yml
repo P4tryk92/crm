@@ -1,0 +1,178 @@
+AppBundle\Entity\Lead:
+  type: entity
+  repositoryClass: AppBundle\Repository\LeadRepository
+  table: lead
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    firstName:
+      type: string
+      length: 25
+      nullable: true
+    lastName:
+      type: string
+      length: 25
+      nullable: true
+    pin:
+      type: integer
+      nullable: true
+      unique: true
+    phoneNumber:
+      type: integer
+      nullable: true
+    email:
+      type: string
+      length: 64
+      # unique: true
+      nullable: true
+    isActive:
+      type: boolean
+    note:
+      type: string
+      length: 512
+      nullable: true
+    birthDate:
+      type: datetime
+      nullable: true
+    birthPlace:
+      type: string
+      length: 254
+      nullable: true
+    idCard:
+      type: string
+      length: 25
+      nullable: true
+    idCardExpirationDate:
+      type: datetime
+      nullable: true
+    fatherFirstName:
+      type: string
+      length: 25
+      nullable: true
+    motherFirstName:
+      type: string
+      length: 25
+      nullable: true
+    motherFamilySurname:
+      type: string
+      length: 25
+      nullable: true
+    maritalStatus:
+      type: string
+      length: 25
+      nullable: true
+    education:
+      type: string
+      length: 64
+      nullable: true
+    workIndustry:
+      type: string
+      length: 25
+      nullable: true
+    companyName:
+      type: string
+      length: 64
+      nullable: true
+    workLengthExperience:
+      type: string
+      length: 25
+      nullable: true
+    addressStreetAndNumber:
+      type: string
+      length: 25
+      nullable: true
+    addressPostCode:
+      type: string
+      length: 25
+      nullable: true
+    addressCity:
+      type: string
+      length: 25
+      nullable: true
+    voivodeship:
+      type: string
+      length: 25
+      nullable: true
+    nationality:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceAddressStreetAndNumber:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceAddressPostCode:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceAddressCity:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceVoivodeship:
+      type: string
+      length: 25
+      nullable: true
+    dateFromLivesAtCurrentAddress:
+      type: datetime
+      nullable: true
+    fixedSalaryNet:
+      type: float
+      nullable: true
+    estimatedTimeSalaryNet:
+      type: float
+      nullable: true
+    numberOfPeopleInTheHousehold:
+      type: integer
+      nullable: true
+    totalFamilyIncome:
+      type: float
+      nullable: true
+    typeOfWorkContract:
+      type: string
+      length: 25
+      nullable: true
+    startWorkContractDate:
+      type: datetime
+      nullable: true
+    endWorkContractDate:
+      type: string
+      length: 25
+      nullable: true
+    alimony:
+      type: boolean
+      nullable: true
+    alimonyDateFrom:
+      type: datetime
+      nullable: true
+    alimonyDateTo:
+      type: datetime
+      nullable: true
+    alimonyAmount:
+      type: float
+      nullable: true
+    created_at:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+        type: datetime
+        gedmo:
+          timestampable:
+            on: update
+  oneToMany:
+    credits:
+      targetEntity: Credit
+      mappedBy: lead
+    wealth:
+      targetEntity: Wealth
+      mappedBy: lead
+    wealthByAppraiser:
+      targetEntity: WealthByAppraiser
+      mappedBy: lead
+    shares:
+      targetEntity: Shares
+      mappedBy: lead
