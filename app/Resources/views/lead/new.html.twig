@@ -1,11 +1,207 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div>
-        <h1>Doadaj nowego klienta:</h1>
+   
+    <header>
+        <h3>Dodawanie nowego klienta </h3>
+    </header>
+
+    <div class="sterowanie">
+        <div id="podstawowe"><a href="#"> Dane podstawowe </a></div>
+        <div id="dodatkowe"><a href="#">Dane dodatkowe </a></div>
+        <div id="kontaktowe"><a href="#">Dane kontaktowe</a></div>
+        <div id="wynagrodzeniu"><a href="#">Dane o wynagrodzeniu </a></div>
     </div>
+    <form id="dane">
+        <div id="container">
+            <a href="#" class="przewijanie"></a>
+
+            <fieldset id="podstaw">
+                <legend>Dane podstawowe </legend>
+                <div class="podst">
+                    <label>
+                        <p>Imię</p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Nazwisko</p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Pesel</p><input type="number" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Numer telefonu </p> <input type="tel" />
+                    </label>
+                    <label>
+                        <p>Adres mailowy </p> <input type="email" />
+                    </label><br><br>
+                </div>
+                <div id="not">
+                    <textarea rows="1" cols="50" maxlength="100">Notatka</textarea>
+                </div>
+                <div id="data">
+                    <label>Data utworzenia <input type="date" /></label>
+                </div>
+
+            </fieldset>
+
+            <fieldset id="dodatk">
+                <legend>Dane dodatkowe</legend>
+                <div class="podst">
+                    <label>
+                        <p>Data urodzenia</p> <input type="date" />
+                    </label>
+                    <label>
+                        <p>Miejsce urodzenia </p><input type="text" placeholder="Wpisz miejscowość" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Seria i numer dowodu osobistego </p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Data ważności dowodu osobistego </p><input type="date" />
+                    </label>
+                </div>
+                <!--  -->
+                <div class="podst">
+                    <label>
+                        <p>Imiona rodziców </p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Nazwisko rodowe matki</p> <input type="text" />
+                    </label>
+                    <label>
+                        <p>Stan cywilny </p><input type="text" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label for="wyksztalcenie">
+                        <p>Wykształcenie</p>
+                    </label>
+                    <select id="wyksztalcenie">
+                        <option>Podstawowe</option>
+                        <option>Zawodowe</option>
+                        <option>Średnie</option>
+                        <option>Wyższe licencjackie</option>
+                        <option>Wyższe inżynierskie</option>
+                        <option>Wyższe magisterskie</option>
+                        <option>Wyższe doktoranckie</option>
+                    </select>
+                </div>
+                <div class="podst">
+
+                    <label>
+                        <p>Branża w której pracuje </p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Nazwa firmy </p><input type="text" maxlength="50" />
+                    </label>
+                    <label>
+                        <p>Staż pracy </p><input type="number" />
+                    </label>
+                </div>
+
+            </fieldset>
+
+            <fieldset id="kontakt">
+                <legend>Dane kontaktowe</legend>
+                <div class="podst">
+                    <label>
+                        <p>Adres zamieszkania</p> <input type="text" placeholder="Wpisz ulicę" />
+                    </label>
+                    <label>
+                        <p>Numer budynku </p><input type="text" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Kod pocztowy </p> <input type="text" />
+                    </label>
+                    <label>
+                        <p>Miejscowość </p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Województwo </p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Obywatelstwo </p><input type="text" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Adres do Korespondencji </p><input type="text" />
+                    </label>
+                    <label>
+                        <p>Data od kiedy mieszka pod aktualnym adresem </p><input type="date" />
+                    </label>
+                </div>
+
+            </fieldset>
+            <fieldset id="wynagr">
+                <legend>Dane o wynagrodzeniu</legend>
+                <div class="podst">
+                    <label>
+                        <p>Wysokość wynagrodzeń stałych netto </p><input type="number" />
+                    </label>
+                    <label>
+                        <p>Szacowana wysokość wynagrodzeń doraźnych netto </p><input type="number" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Ilość osób w gospodarstwie </p> <input type="number" />
+                    </label><br><br>
+                    <label for="bool">Czy jesteś jedynym żródłem dochodu dla gospodarstwa</label>
+                    <select class="bool">
+                        <option selected>Tak</option>
+                        <option>Nie</option>
+                    </select>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Rodzaj umowy na jaką jest zatrudniony </p><input type="text" />
+                    </label>
+                </div>
+                <div class="podst">
+                    <label>
+                        <p>Data zawarcia umowy</p> <input type="date" />
+                    </label>
+                    <label>
+                        <p>Do kiedy obowiązuje </p><input type="date" />
+                    </label><br><br>
+                    <label for="bool">Czy posiada kredyt</label>
+                    <select class="bool">
+                        <option>Tak</option>
+                        <option selected>Nie</option>
+                    </select>
+                </div>
+                <div class="podst">
+                    <label for="bool">Czy ma zobowiązanie alimentowe</label>
+                    <select class="bool">
+                        <option>Tak</option>
+                        <option selected>Nie</option>
+                    </select><br><br>
+                    <label for="bool">Czy Posiada Jakiś majątek</label>
+                    <select class="bool">
+                        <option>Tak</option>
+                        <option selected>Nie</option>
+                    </select>
+                </div>
+            </fieldset>
+
+        </div>
+    </form>
+
 {% endblock %}
 
 {% block stylesheets %}
-    
+    <link href="{{ asset( '../css/dodawanieKlientaStyle.css' ) }}" rel="stylesheet" type="text/css" /> 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ asset('../js/jquery/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('../js/dodawanieKlienta.js') }}"></script>
 {% endblock %}
