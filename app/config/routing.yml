@@ -31,3 +31,11 @@ user_new:
 homepage:
     path:     /
     defaults: { _controller: AppBundle:Default:index }
+
+lead_index:
+    path:     /klienci
+    defaults: { _controller: AppBundle:Lead:index }
+
+lead_new:
+    path:     /klient/nowy
+    defaults: { _controller: AppBundle:Lead:new }

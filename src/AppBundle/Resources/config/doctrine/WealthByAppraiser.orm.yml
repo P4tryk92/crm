@@ -1,0 +1,23 @@
+AppBundle\Entity\WealthByAppraiser:
+  type: entity
+  repositoryClass: AppBundle\Repository\WealthByAppraiserRepository
+  table: wealth_by_appraiser
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    type:
+      type: string
+      length: 64
+      nullable: true
+    estimatedValuation:
+      type: float
+      nullable: true
+  manyToOne: 
+    lead:
+      targetEntity: Lead
+      inversedBy: wealthByAppraiser
+      joinColumn:
+        name: wealth_by_appraiser_id
+        referencedColumnName: id

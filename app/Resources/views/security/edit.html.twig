@@ -5,6 +5,10 @@
 <div>
     {{ form(form) }}
     <a href="{{ url('homepage') }}">Anuluj</a>
+    {% if error is defined %}
+        <br/>
+        {{ error }}
+    {% endif %}
 </div>
     
 {% endblock %}

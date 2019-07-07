@@ -1,0 +1,35 @@
+AppBundle\Entity\Credit:
+  type: entity
+  repositoryClass: AppBundle\Repository\CreditRepository
+  table: credit
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    amount:
+      type: float
+      nullable: true
+    grantingDate:
+      type: datetime
+      nullable: true
+    repaymentDate:
+      type: datetime
+      nullable: true
+    monthlyInstallment:
+      type: integer
+      nullable: true
+    bankName:
+      type: string
+      length: 64
+      nullable: true
+    profitMargin:
+      type: float
+      nullable: true
+  manyToOne: 
+    lead:
+      targetEntity: Lead
+      inversedBy: credits
+      joinColumn:
+        name: lead_id
+        referencedColumnName: id
