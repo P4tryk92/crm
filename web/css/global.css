@@ -1,0 +1,19 @@
+body {
+    font-family: 'Montserrat' !important;
+}
+
+.btn.btn_normal{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+    }
+    
+.btn_normal:hover{
+        color: black;
+        background-color: white;
+        }
+
+.error{
+    color:red;
+    font-size:18px;
+    }
