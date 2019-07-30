@@ -2,10 +2,18 @@
 
 {% block body %}
     <div>
-        <h1>Czesc Admin</h1>
+        Dashboard
     </div>
 {% endblock %}
 
 {% block stylesheets %}
     
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    var allLeadsLength = {{ allLeads|length }};
+    var activeLeadsLength = {{ activeLeads|length }};
+</script>
+<script src="{{ asset('../js/dashboard.js') }}"></script>
 {% endblock %}
