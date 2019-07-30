@@ -24,6 +24,9 @@
                     <a href="{{ url('user_index') }}">Ustawienia</a>
                     <a href="{{ url('logout') }}">Wyloguj</a>
                 </nav>
+                <div>
+                    Witaj {{ app.user.firstName }}
+                </div>
             </header>
         {% endblock %}
 

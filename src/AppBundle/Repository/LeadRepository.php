@@ -10,4 +10,26 @@ namespace AppBundle\Repository;
  */
 class LeadRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllLeads()
+    {
+        $em = $this->getEntityManager();
+
+        $qb = $em->createQueryBuilder()
+                 ->select('e')
+                 ->from('AppBundle:Lead', 'e');
+        
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getActiveLeads()
+    {
+        $em = $this->getEntityManager();
+
+        $qb = $em->createQueryBuilder()
+                 ->select('e')
+                 ->from('AppBundle:Lead', 'e')
+                 ->where('e.isActive = 1');
+        
+        return $qb->getQuery()->getResult();
+    }
 }
