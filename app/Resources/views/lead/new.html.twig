@@ -2,9 +2,7 @@
 
 {% block body %}
    
-    <header>
-        <h3>Dodawanie nowego klienta </h3>
-    </header>
+    <h3>Dodawanie nowego klienta </h3>
 
     <div class="sterowanie">
         <div id="podstawowe"><a href="#"> Dane podstawowe </a></div>
@@ -12,7 +10,7 @@
         <div id="kontaktowe"><a href="#">Dane kontaktowe</a></div>
         <div id="wynagrodzeniu"><a href="#">Dane o wynagrodzeniu </a></div>
     </div>
-    <form id="dane">
+    {{ form_start(form) }}
         <div id="container">
             <a href="#" class="przewijanie"></a>
 
@@ -20,28 +18,34 @@
                 <legend>Dane podstawowe </legend>
                 <div class="podst">
                     <label>
-                        <p>Imię</p><input type="text" />
+                        <p>Imię</p>
+                        {{ form_widget(form.firstName) }}
                     </label>
                     <label>
-                        <p>Nazwisko</p><input type="text" />
+                        <p>Nazwisko</p>
+                        {{ form_widget(form.lastName) }}
                     </label>
                     <label>
-                        <p>Pesel</p><input type="number" />
+                        <p>Pesel</p>
+                        {{ form_widget(form.pin) }}
                     </label>
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Numer telefonu </p> <input type="tel" />
+                        <p>Numer telefonu </p>
+                        {{ form_widget(form.phoneNumber) }}
                     </label>
                     <label>
-                        <p>Adres mailowy </p> <input type="email" />
+                        <p>Adres mailowy </p>
+                        {{ form_widget(form.email) }}
+                    </label>
+                    <label>
+                        <p>Aktywny? </p>
+                        {{ form_widget(form.isActive) }}
                     </label><br><br>
                 </div>
                 <div id="not">
-                    <textarea rows="1" cols="50" maxlength="100">Notatka</textarea>
-                </div>
-                <div id="data">
-                    <label>Data utworzenia <input type="date" /></label>
+                    {{ form_widget(form.note) }}
                 </div>
 
             </fieldset>
@@ -50,56 +54,62 @@
                 <legend>Dane dodatkowe</legend>
                 <div class="podst">
                     <label>
-                        <p>Data urodzenia</p> <input type="date" />
+                        <p>Data urodzenia</p>
+                        {{ form_widget(form.birthDate) }}
                     </label>
                     <label>
-                        <p>Miejsce urodzenia </p><input type="text" placeholder="Wpisz miejscowość" />
+                        <p>Miejsce urodzenia </p>
+                        {{ form_widget(form.birthPlace) }}
                     </label>
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Seria i numer dowodu osobistego </p><input type="text" />
+                        <p>Seria i numer dowodu osobistego </p>
+                        {{ form_widget(form.idCard) }}
                     </label>
                     <label>
-                        <p>Data ważności dowodu osobistego </p><input type="date" />
+                        <p>Data ważności dowodu osobistego </p>
+                        {{ form_widget(form.idCardExpirationDate) }}
                     </label>
                 </div>
                 <!--  -->
                 <div class="podst">
                     <label>
-                        <p>Imiona rodziców </p><input type="text" />
+                        <p>Imię ojca </p>
+                        {{ form_widget(form.fatherFirstName) }}
                     </label>
                     <label>
-                        <p>Nazwisko rodowe matki</p> <input type="text" />
+                        <p>Imię matki </p>
+                        {{ form_widget(form.motherFirstName) }}
                     </label>
                     <label>
-                        <p>Stan cywilny </p><input type="text" />
+                        <p>Nazwisko rodowe matki</p>
+                        {{ form_widget(form.motherFamilySurname) }}
+                    </label>
+                    <label>
+                        <p>Stan cywilny </p>
+                        {{ form_widget(form.maritalStatus) }}
                     </label>
                 </div>
                 <div class="podst">
-                    <label for="wyksztalcenie">
+                    <label>
                         <p>Wykształcenie</p>
+                        {{ form_widget(form.education) }}
                     </label>
-                    <select id="wyksztalcenie">
-                        <option>Podstawowe</option>
-                        <option>Zawodowe</option>
-                        <option>Średnie</option>
-                        <option>Wyższe licencjackie</option>
-                        <option>Wyższe inżynierskie</option>
-                        <option>Wyższe magisterskie</option>
-                        <option>Wyższe doktoranckie</option>
-                    </select>
                 </div>
                 <div class="podst">
 
                     <label>
-                        <p>Branża w której pracuje </p><input type="text" />
+                        <p>Branża w której pracuje </p>
+                        {{ form_widget(form.workIndustry) }}
                     </label>
                     <label>
-                        <p>Nazwa firmy </p><input type="text" maxlength="50" />
+                        <p>Nazwa firmy </p>
+                        {{ form_widget(form.companyName) }}
                     </label>
                     <label>
-                        <p>Staż pracy </p><input type="number" />
+                        <p>Staż pracy w miesiącach</p>
+                        {{ form_widget(form.workLengthExperience) }}
                     </label>
                 </div>
 
@@ -109,32 +119,48 @@
                 <legend>Dane kontaktowe</legend>
                 <div class="podst">
                     <label>
-                        <p>Adres zamieszkania</p> <input type="text" placeholder="Wpisz ulicę" />
-                    </label>
-                    <label>
-                        <p>Numer budynku </p><input type="text" />
+                        <p>Adres zamieszkania (ulica i numer budynku)</p>
+                        {{ form_widget(form.addressStreetAndNumber) }}
                     </label>
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Kod pocztowy </p> <input type="text" />
+                        <p>Kod pocztowy </p>
+                        {{ form_widget(form.addressPostCode) }}
                     </label>
                     <label>
-                        <p>Miejscowość </p><input type="text" />
+                        <p>Miejscowość </p>
+                        {{ form_widget(form.addressCity) }}
                     </label>
                     <label>
-                        <p>Województwo </p><input type="text" />
+                        <p>Województwo </p>
+                        {{ form_widget(form.voivodeship) }}
                     </label>
                     <label>
-                        <p>Obywatelstwo </p><input type="text" />
+                        <p>Obywatelstwo </p>
+                        {{ form_widget(form.nationality) }}
                     </label>
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Adres do Korespondencji </p><input type="text" />
+                        <p>Adres do Korespondencji (ulica i number budynku)</p>
+                        {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
                     </label>
                     <label>
-                        <p>Data od kiedy mieszka pod aktualnym adresem </p><input type="date" />
+                        <p>Kod pocztowy do Korespondencji</p>
+                        {{ form_widget(form.correspondenceAddressPostCode) }}
+                    </label>
+                    <label>
+                        <p>Miejscowość do Korespondencji</p>
+                        {{ form_widget(form.correspondenceAddressCity) }}
+                    </label>
+                    <label>
+                        <p>Województwo do Korespondencji</p>
+                        {{ form_widget(form.correspondenceVoivodeship) }}
+                    </label>
+                    <label>
+                        <p>Data od kiedy mieszka pod aktualnym adresem </p>
+                        {{ form_widget(form.dateFromLivesAtCurrentAddress) }}
                     </label>
                 </div>
 
@@ -143,46 +169,57 @@
                 <legend>Dane o wynagrodzeniu</legend>
                 <div class="podst">
                     <label>
-                        <p>Wysokość wynagrodzeń stałych netto </p><input type="number" />
+                        <p>Wysokość wynagrodzeń stałych netto </p>
+                        {{ form_widget(form.fixedSalaryNet) }}
                     </label>
                     <label>
-                        <p>Szacowana wysokość wynagrodzeń doraźnych netto </p><input type="number" />
+                        <p>Szacowana wysokość wynagrodzeń doraźnych netto </p>
+                        {{ form_widget(form.estimatedTimeSalaryNet) }}
                     </label>
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Ilość osób w gospodarstwie </p> <input type="number" />
+                        <p>Ilość osób w gospodarstwie </p>
+                        {{ form_widget(form.numberOfPeopleInTheHousehold) }}
                     </label><br><br>
                     <label for="bool">Czy jesteś jedynym żródłem dochodu dla gospodarstwa</label>
                     <select class="bool">
                         <option selected>Tak</option>
                         <option>Nie</option>
                     </select>
+                    {{ form_widget(form.totalFamilyIncome) }}
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Rodzaj umowy na jaką jest zatrudniony </p><input type="text" />
+                        <p>Rodzaj umowy na jaką jest zatrudniony </p>
+                        {{ form_widget(form.typeOfWorkContract) }}
                     </label>
                 </div>
                 <div class="podst">
                     <label>
-                        <p>Data zawarcia umowy</p> <input type="date" />
+                        <p>Data zawarcia umowy</p>
+                        {{ form_widget(form.startWorkContractDate) }}
                     </label>
                     <label>
-                        <p>Do kiedy obowiązuje </p><input type="date" />
+                        <p>Do kiedy obowiązuje </p>
+                        {{ form_widget(form.endWorkContractDate) }}
                     </label><br><br>
+                    <label for="bool">Czy ma zobowiązanie alimentowe</label>
+                    {{ form_widget(form.alimony) }}
+                    <label for="bool">Zobowiązanie alimentowe data od</label>
+                    {{ form_widget(form.alimonyDateFrom) }}
+                    <label for="bool">Zobowiązanie alimentowe data do</label>
+                    {{ form_widget(form.alimonyDateTo) }}
+                    <label for="bool">Wysokość zobowiązania</label>
+                    {{ form_widget(form.alimonyAmount) }}
+                </div>
+                <div class="podst">
+
                     <label for="bool">Czy posiada kredyt</label>
                     <select class="bool">
                         <option>Tak</option>
                         <option selected>Nie</option>
                     </select>
-                </div>
-                <div class="podst">
-                    <label for="bool">Czy ma zobowiązanie alimentowe</label>
-                    <select class="bool">
-                        <option>Tak</option>
-                        <option selected>Nie</option>
-                    </select><br><br>
                     <label for="bool">Czy Posiada Jakiś majątek</label>
                     <select class="bool">
                         <option>Tak</option>
@@ -192,7 +229,7 @@
             </fieldset>
 
         </div>
-    </form>
+    {{ form_end(form) }}
 
 {% endblock %}
 

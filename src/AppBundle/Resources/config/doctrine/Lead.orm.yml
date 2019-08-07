@@ -138,7 +138,7 @@ AppBundle\Entity\Lead:
       type: datetime
       nullable: true
     endWorkContractDate:
-      type: string
+      type: datetime
       length: 25
       nullable: true
     alimony:
