@@ -26,6 +26,11 @@ class LeadController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             
+            $lead = $form->getData();
+            $lead->setCreatedAt(new \DateTime());
+            $lead->setUpdatedAt(new \DateTime());
+            $em->persist($lead);
+            $em->flush();
 
             return $this->redirectToRoute('homepage'); 
         }
