@@ -17,3 +17,21 @@ body {
     color:red;
     font-size:18px;
     }
+.user-img{
+        height: 40px;
+    }
+.navbar-nav.custom{
+        margin-right: 20px;
+    }
+.navbar-color{
+    
+        -webkit-box-shadow:0px 0px 50px 10px #f8f9fa ;
+        -moz-box-shadow:0px 0px 50px 10px #f8f9fa ;
+        box-shadow:0px 0px 50px 10px #f8f9fa ;
+    }
+.navbar-toggler-icon.custom{
+    background-color: #b1b1b170;
+    padding: 5px;
+    border-radius: 7px;
+    width: 70px;
+}
