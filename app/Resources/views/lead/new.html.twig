@@ -1,245 +1,323 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   
-    <h3>Dodawanie nowego klienta </h3>
 
-    <div class="sterowanie">
-        <div id="podstawowe"><a href="#"> Dane podstawowe </a></div>
-        <div id="dodatkowe"><a href="#">Dane dodatkowe </a></div>
-        <div id="kontaktowe"><a href="#">Dane kontaktowe</a></div>
-        <div id="wynagrodzeniu"><a href="#">Dane o wynagrodzeniu </a></div>
-    </div>
+<h3>Dodawanie nowego klienta </h3>
+
+
+<div class="container">
+
     {{ form_start(form) }}
-        <div id="container">
-            <a href="#" class="przewijanie"></a>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <!-- Imię -->
+                {{ form_label(form.firstName, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.firstName) }}
+            </div>
 
-            <fieldset id="podstaw">
-                <legend>Dane podstawowe </legend>
-                <div class="podst">
-                    <label>
-                        <p>Imię</p>
-                        {{ form_widget(form.firstName) }}
-                    </label>
-                    <label>
-                        <p>Nazwisko</p>
-                        {{ form_widget(form.lastName) }}
-                    </label>
-                    <label>
-                        <p>Pesel</p>
-                        {{ form_widget(form.pin) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Numer telefonu </p>
-                        {{ form_widget(form.phoneNumber) }}
-                    </label>
-                    <label>
-                        <p>Adres mailowy </p>
-                        {{ form_widget(form.email) }}
-                    </label>
-                    <label>
-                        <p>Aktywny? </p>
-                        {{ form_widget(form.isActive) }}
-                    </label><br><br>
-                </div>
-                <div id="not">
-                    {{ form_widget(form.note) }}
-                </div>
+            <div class="form-group">
+                <!-- Nazwisko -->
+                {{ form_label(form.lastName, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.lastName) }}
 
-            </fieldset>
+            </div>
 
-            <fieldset id="dodatk">
-                <legend>Dane dodatkowe</legend>
-                <div class="podst">
-                    <label>
-                        <p>Data urodzenia</p>
-                        {{ form_widget(form.birthDate) }}
-                    </label>
-                    <label>
-                        <p>Miejsce urodzenia </p>
-                        {{ form_widget(form.birthPlace) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Seria i numer dowodu osobistego </p>
-                        {{ form_widget(form.idCard) }}
-                    </label>
-                    <label>
-                        <p>Data ważności dowodu osobistego </p>
-                        {{ form_widget(form.idCardExpirationDate) }}
-                    </label>
-                </div>
-                <!--  -->
-                <div class="podst">
-                    <label>
-                        <p>Imię ojca </p>
-                        {{ form_widget(form.fatherFirstName) }}
-                    </label>
-                    <label>
-                        <p>Imię matki </p>
-                        {{ form_widget(form.motherFirstName) }}
-                    </label>
-                    <label>
-                        <p>Nazwisko rodowe matki</p>
-                        {{ form_widget(form.motherFamilySurname) }}
-                    </label>
-                    <label>
-                        <p>Stan cywilny </p>
-                        {{ form_widget(form.maritalStatus) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Wykształcenie</p>
-                        {{ form_widget(form.education) }}
-                    </label>
-                </div>
-                <div class="podst">
+            <div class="form-group">
+                <!-- Pesel -->
+                {{ form_label(form.pin, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.pin) }}
+            </div>
 
-                    <label>
-                        <p>Branża w której pracuje </p>
-                        {{ form_widget(form.workIndustry) }}
-                    </label>
-                    <label>
-                        <p>Nazwa firmy </p>
-                        {{ form_widget(form.companyName) }}
-                    </label>
-                    <label>
-                        <p>Staż pracy w miesiącach</p>
-                        {{ form_widget(form.workLengthExperience) }}
-                    </label>
-                </div>
+            <div class="form-group">
+                <!-- Numer telefonu-->
+                {{ form_label(form.phoneNumber, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.phoneNumber) }}
+            </div>
 
-            </fieldset>
+            <div class="form-group">
+                <!-- Email-->
+                {{ form_label(form.email, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.email) }}
+            </div>
 
-            <fieldset id="kontakt">
-                <legend>Dane kontaktowe</legend>
-                <div class="podst">
-                    <label>
-                        <p>Adres zamieszkania (ulica i numer budynku)</p>
-                        {{ form_widget(form.addressStreetAndNumber) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Kod pocztowy </p>
-                        {{ form_widget(form.addressPostCode) }}
-                    </label>
-                    <label>
-                        <p>Miejscowość </p>
-                        {{ form_widget(form.addressCity) }}
-                    </label>
-                    <label>
-                        <p>Województwo </p>
-                        {{ form_widget(form.voivodeship) }}
-                    </label>
-                    <label>
-                        <p>Obywatelstwo </p>
-                        {{ form_widget(form.nationality) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Adres do Korespondencji (ulica i number budynku)</p>
-                        {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
-                    </label>
-                    <label>
-                        <p>Kod pocztowy do Korespondencji</p>
-                        {{ form_widget(form.correspondenceAddressPostCode) }}
-                    </label>
-                    <label>
-                        <p>Miejscowość do Korespondencji</p>
-                        {{ form_widget(form.correspondenceAddressCity) }}
-                    </label>
-                    <label>
-                        <p>Województwo do Korespondencji</p>
-                        {{ form_widget(form.correspondenceVoivodeship) }}
-                    </label>
-                    <label>
-                        <p>Data od kiedy mieszka pod aktualnym adresem </p>
-                        {{ form_widget(form.dateFromLivesAtCurrentAddress) }}
-                    </label>
-                </div>
+            <div class="form-group">
+                <!-- Data Urodzenia -->
+                {{ form_label(form.birthDate, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.birthDate) }}
+            </div>
 
-            </fieldset>
-            <fieldset id="wynagr">
-                <legend>Dane o wynagrodzeniu</legend>
-                <div class="podst">
-                    <label>
-                        <p>Wysokość wynagrodzeń stałych netto </p>
-                        {{ form_widget(form.fixedSalaryNet) }}
-                    </label>
-                    <label>
-                        <p>Szacowana wysokość wynagrodzeń doraźnych netto </p>
-                        {{ form_widget(form.estimatedTimeSalaryNet) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Ilość osób w gospodarstwie </p>
-                        {{ form_widget(form.numberOfPeopleInTheHousehold) }}
-                    </label><br><br>
-                    <label for="bool">Czy jesteś jedynym żródłem dochodu dla gospodarstwa</label>
-                    <select class="bool">
-                        <option selected>Tak</option>
-                        <option>Nie</option>
-                    </select>
-                    Jeśli nie to przychód całej rodziny:
-                    {{ form_widget(form.totalFamilyIncome) }}
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Rodzaj umowy na jaką jest zatrudniony </p>
-                        {{ form_widget(form.typeOfWorkContract) }}
-                    </label>
-                </div>
-                <div class="podst">
-                    <label>
-                        <p>Data zawarcia umowy</p>
-                        {{ form_widget(form.startWorkContractDate) }}
-                    </label>
-                    <label>
-                        <p>Do kiedy obowiązuje </p>
-                        {{ form_widget(form.endWorkContractDate) }}
-                    </label><br><br>
-                    <label for="bool">Czy ma zobowiązanie alimentowe</label>
-                    {{ form_widget(form.alimony) }}
-                    <label for="bool">Zobowiązanie alimentowe data od</label>
-                    {{ form_widget(form.alimonyDateFrom) }}
-                    <label for="bool">Zobowiązanie alimentowe data do</label>
-                    {{ form_widget(form.alimonyDateTo) }}
-                    <label for="bool">Wysokość zobowiązania</label>
-                    {{ form_widget(form.alimonyAmount) }}
-                </div>
-                <div class="podst">
+            <div class="form-group">
+                <!-- Miejsce urodzenia -->
+                {{ form_label(form.birthPlace, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.birthPlace) }}
+            </div>
 
-                    <label for="bool">Czy posiada kredyt</label>
-                    <select class="bool">
-                        <option>Tak</option>
-                        <option selected>Nie</option>
-                    </select>
-                    <label for="bool">Czy Posiada Jakiś majątek</label>
-                    <select class="bool">
-                        <option>Tak</option>
-                        <option selected>Nie</option>
-                    </select>
-                </div>
-            </fieldset>
+            <div class="form-group">
+                <!-- Seria i numer dowodu osobistego -->
+                {{ form_label(form.idCard, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.idCard) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Data ważności dowodu osobistego-->
+                {{ form_label(form.idCardExpirationDate, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.idCardExpirationDate) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Imię ojca-->
+                {{ form_label(form.fatherFirstName, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.fatherFirstName) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Imię matki-->
+                {{ form_label(form.motherFirstName, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.motherFirstName) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Nazwisko rodowe matki -->
+                {{ form_label(form.motherFamilySurname, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.motherFamilySurname) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Stan cywilny -->
+                {{ form_label(form.maritalStatus, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.maritalStatus) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Wykształcenie -->
+                {{ form_label(form.education, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.education) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Adres zamieszkania (ulica i numer budynku) -->
+                {{ form_label(form.addressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.addressStreetAndNumber) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Kod pocztowy -->
+                {{ form_label(form.addressPostCode, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.addressPostCode) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Miejscowość -->
+                {{ form_label(form.addressCity, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.addressCity) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Województwo-->
+                {{ form_label(form.voivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.voivodeship) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Obywatelstwo-->
+                {{ form_label(form.nationality, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.nationality) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Adres do Korespondencji (ulica i number budynku)-->
+                {{ form_label(form.correspondenceAddressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}})
+                }}
+                {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Kod pocztowy do Korespondencji-->
+                {{ form_label(form.correspondenceAddressPostCode, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.correspondenceAddressPostCode) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Miejscowość do Korespondencji-->
+                {{ form_label(form.correspondenceAddressCity, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.correspondenceAddressCity) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Województwo do Korespondencji-->
+                {{ form_label(form.correspondenceVoivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.correspondenceVoivodeship) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Data od kiedy mieszka pod aktualnym adresem-->
+                {{ form_label(form.dateFromLivesAtCurrentAddress, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.dateFromLivesAtCurrentAddress) }}
+            </div>
 
         </div>
-    {{ form_end(form) }}
 
-{% endblock %}
 
-{% block stylesheets %}
-    <link href="{{ asset( '../css/dodawanieKlientaStyle.css' ) }}" rel="stylesheet" type="text/css" /> 
-{% endblock %}
 
-{% block javascripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="{{ asset('../js/jquery/jquery.scrollTo.min.js') }}"></script>
-    <script src="{{ asset('../js/dodawanieKlienta.js') }}"></script>
-{% endblock %}
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <!-- Branża w której pracuje -->
+                {{ form_label(form.workIndustry, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.workIndustry) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Nazwa firmy-->
+                {{ form_label(form.companyName, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.companyName) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Staż pracy w miesiącach-->
+                {{ form_label(form.workLengthExperience, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.workLengthExperience) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Wysokość wynagrodzeń stałych netto-->
+                {{ form_label(form.fixedSalaryNet, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.fixedSalaryNet) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Szacowana wysokość wynagrodzeń doraźnych netto-->
+                {{ form_label(form.estimatedTimeSalaryNet, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.estimatedTimeSalaryNet) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Ilość osób w gospodarstwie-->
+                {{ form_label(form.numberOfPeopleInTheHousehold, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.numberOfPeopleInTheHousehold) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Czy jesteś jedynym żródłem dochodu dla gospodarstwa-->
+                {{ form_label(form.totalFamilyIncome, null, {'label_attr': {'class': 'control-label'}}) }}
+                <!-- ??????? 
+    
+                        <label for="bool">Czy jesteś jedynym żródłem dochodu dla gospodarstwa</label>
+                        <select class="bool">
+                            <option selected>Tak</option>
+                            <option>Nie</option>
+                        </select>-->
+                Jeśli nie to przychód całej rodziny:
+                {{ form_widget(form.totalFamilyIncome) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Rodzaj umowy na jaką jest zatrudniony-->
+                {{ form_label(form.typeOfWorkContract, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.typeOfWorkContract) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Data zawarcia umowy-->
+                {{ form_label(form.startWorkContractDate, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.startWorkContractDate) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Do kiedy obowiązuje-->
+                {{ form_label(form.endWorkContractDate, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.endWorkContractDate) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Czy ma zobowiązanie alimentowe-->
+                {{ form_label(form.alimony, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.alimony) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Zobowiązanie alimentowe data od-->
+                {{ form_label(form.alimonyDateFrom, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.alimonyDateFrom) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Zobowiązanie alimentowe data do-->
+                {{ form_label(form.alimonyDateTo, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.alimonyDateTo) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Wysokość zobowiązania-->
+                {{ form_label(form.alimonyAmount, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.alimonyAmount) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Czy posiada kredyt-->
+                <label class="control-label">Czy posiada kredyt</label>
+                <!-- ?????????
+                         <label for="bool">Czy posiada kredyt</label>
+                        <select class="bool">
+                            <option>Tak</option>
+                            <option selected>Nie</option>
+                        </select> -->
+
+            </div>
+
+            <div class="form-group">
+                <!-- Czy Posiada Jakiś majątek-->
+                <label class="control-label">Czy Posiada Jakiś majątek</label>
+                <!-- ?????????
+                        <label for="bool">Czy Posiada Jakiś majątek</label>
+                        <select class="bool">
+                            <option>Tak</option>
+                            <option selected>Nie</option>
+                        </select> -->
+            </div>
+
+            <div class="form-group">
+                <!-- Aktywny?-->
+                {{ form_label(form.isActive, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.isActive) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Notatka-->
+                {{ form_label(form.note, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.note) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Submit Button -->
+                {{ form_label(form.save, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.save) }}
+            </div>
+
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+    {% endblock %}
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {% endblock %}
+
+    {% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/204a798f93.js"></script>
+
+
+    {% endblock %}
