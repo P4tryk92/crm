@@ -16,7 +16,7 @@ AppBundle\Entity\Lead:
       length: 25
       nullable: true
     pin:
-      type: integer
+      type: string
       nullable: true
       unique: true
     phoneNumber:

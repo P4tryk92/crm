@@ -56,7 +56,7 @@ class LeadType extends AbstractType
             ->add('alimonyDateFrom', DateType::class, ['widget' => 'single_text', 'attr' => ['class' => 'form-style']])
             ->add('alimonyDateTo', DateType::class, ['widget' => 'single_text', 'attr' => ['class' => 'form-style']])
             ->add('alimonyAmount', IntegerType::class, ['attr' => ['class' => 'form-style']])
-
+            
 
 
 
