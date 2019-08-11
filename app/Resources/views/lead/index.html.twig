@@ -1,11 +1,75 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <a href="{{ url('lead_new') }}">Dodaj nowego klienta</a>
     <div>
         Klienci:
     </div>
     <br>
-    <a href="{{ url('lead_new') }}">Dodaj nowego klienta</a>
+
+    <table id="" class="">
+        <thead>
+            <tr>
+                <th style="width:50px;">Liczba klientów<br />({{ leads|length }})</th>
+                <th style="width:50px;">Id</th>
+                <th style="width:50px;">Imię</th>
+                <th style="width:100px;">Nazwisko</th>
+                <th style="width:100px;">Pesel</th>
+                <th style="width:100px;">Numer telefonu</th>
+                <th style="width:100px;">Zarobki</th>
+                <th style="width:150px;">Kredyt od</th>
+                <th style="width:150px;">Wysokość kredytu</th>
+                <th style="width:150px;">Wysokość raty kredytu</th>
+                <th style="width:100px;">Bank</th>
+                <th style="width:100px;">Status</th>
+                <th style="width:150px;">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lead in leads %}
+                <tr class="{{lead.id}}-row">
+                    <td>
+                        {{ loop.index + (page - 1 ) * perPage }}
+                    </td>
+                    <td>
+                        {{lead.id}}
+                    </td>
+                    <td>
+                        {{lead.firstName}}
+                    </td>
+                    <td>
+                        {{lead.lastName}}
+                    </td>
+                    <td>
+                        {{lead.pin}}
+                    </td>
+                    <td>
+                        {{lead.phoneNumber}}
+                    </td>
+                    <td>
+                        {{lead.fixedSalaryNet}}
+                    </td>
+                    <td>
+                        TO DO BACKEND grantingDate
+                    </td>
+                    <td>
+                        TO DO BACKEND amount
+                    </td>
+                    <td>
+                        TO DO BACKEND monthlyInstallment
+                    </td>
+                    <td>
+                        TO DO BACKEND bankName
+                    </td>
+                    <td>
+                        {{lead.isActive}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
 
 {% block stylesheets %}

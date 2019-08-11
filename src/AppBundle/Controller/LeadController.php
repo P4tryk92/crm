@@ -8,12 +8,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Lead;
 use AppBundle\Form\LeadType;
+use AppBundle\Controller\BaseController;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
-class LeadController extends Controller
+class LeadController extends BaseController
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $page)
     {
-        return $this->render('lead/index.html.twig');
+        $this->setPerPage();
+
+        $query = $this->getDoctrine()->getRepository('AppBundle:Lead')
+                    ->createQueryBuilder('l')
+                    ->orderBy('l.created_at','DESC')
+                    ->getQuery()
+                    ->setFirstResult(($page-1) * $this->perPage)
+                    ->setMaxResults($this->perPage);
+
+        $paginator = new Paginator($query);
+        
+        return $this->render('lead/index.html.twig', [
+            'leads' => $paginator,
+            'perPage' => $this->perPage,
+            'page' => $page,
+        ]);
     }
 
     public function newAction(Request $request)
@@ -32,7 +49,7 @@ class LeadController extends Controller
             $em->persist($lead);
             $em->flush();
 
-            return $this->redirectToRoute('homepage'); 
+            return $this->redirectToRoute('lead_index'); 
         }
 
         return $this->render('lead/new.html.twig', [

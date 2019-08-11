@@ -33,8 +33,10 @@ homepage:
     defaults: { _controller: AppBundle:Default:index }
 
 lead_index:
-    path:     /klienci
-    defaults: { _controller: AppBundle:Lead:index }
+    path:     /klienci/{page}
+    defaults: { _controller: AppBundle:Lead:index, page: 1 }
+    requirements:
+        page: \d+
 
 lead_new:
     path:     /klient/nowy
