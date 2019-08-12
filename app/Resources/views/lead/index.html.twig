@@ -65,6 +65,9 @@
                     <td>
                         {{lead.isActive}}
                     </td>
+                    <td>
+                        <a href="{{ url('lead_credit_index', {id: lead.id}) }}">Kredyty</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

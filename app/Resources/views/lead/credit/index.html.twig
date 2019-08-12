@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <a href="{{ url('lead_credit_new', {id: lead.id}) }}">Dodaj nowy kredyt</a>
+    <div>
+        Kredyty:
+    </div>
+    <br>
+
+    <table id="" class="">
+        <thead>
+            <tr>
+                <th style="width:100px;">Liczba kredytów<br />({{ credits|length }})</th>
+                <th style="width:100px;">Kwota</th>
+                <th style="width:150px;">Data udzielenia kredytu</th>
+                <th style="width:150px;">Data spłaty kredytu</th>
+                <th style="width:150px;">Wysokość miesięcznej raty</th>
+                <th style="width:150px;">Nazwa banku</th>
+                <th style="width:150px;">Marża w %</th>
+                <th style="width:150px;">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for credit in credits %}
+                <tr class="{{credit.id}}-row">
+                    <td>
+                        {{ loop.index + (page - 1 ) * perPage }}
+                    </td>
+                    <td>
+                        {{credit.amount}}
+                    </td>
+                    <td>
+                        {{credit.grantingDate|date("d-m-Y")}}
+                    </td>
+                    <td>
+                        {{credit.repaymentDate|date("d-m-Y")}}
+                    </td>
+                    <td>
+                        {{credit.monthlyInstallment}}
+                    </td>
+                    <td>
+                        {{credit.bankName}}
+                    </td>
+                    <td>
+                        {{credit.profitMargin}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block stylesheets %}
+    
+{% endblock %}
