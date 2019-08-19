@@ -42,6 +42,18 @@ lead_new:
     path:     /klient/nowy
     defaults: { _controller: AppBundle:Lead:new }
 
+lead_edit:
+    path:     /klient/{id}/edytuj
+    defaults: { _controller: AppBundle:Lead:edit }
+    requirements:
+        id: \d+
+
+lead_remove:
+    path:     /klient/{id}/usun
+    defaults: { _controller: AppBundle:Lead:remove }
+    requirements:
+        id: \d+
+
 lead_credit_index:
     path:     /klient/{id}/kredyty/{page}
     defaults: { _controller: AppBundle:Lead:indexCredit, page: 1  }
@@ -49,5 +61,21 @@ lead_credit_index:
         page: \d+
 
 lead_credit_new:
-    path:     /klient/{id}/nowy-kredyt
+    path:     /klient/{id}/kredyt-nowy
     defaults: { _controller: AppBundle:Lead:newCredit }
+    requirements:
+        id: \d+
+
+lead_credit_edit:
+    path:     /klient/{leadId}/kredyt-edytuj/{creditId}
+    defaults: { _controller: AppBundle:Lead:editCredit }
+    requirements:
+        leadId: \d+
+        creditId: \d+
+
+lead_credit_remove:
+    path:     /klient/{leadId}/kredyt-usun/{creditId}
+    defaults: { _controller: AppBundle:Lead:removeCredit }
+    requirements:
+        leadId: \d+
+        creditId: \d+

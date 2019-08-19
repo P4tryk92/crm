@@ -2,7 +2,11 @@
 
 {% block body %}
 
-<h3>Dodawanie nowego klienta </h3>
+{% if edit is defined %}
+    <h3>Edycja klienta "{{lead.firstName}} {{lead.lastName}}"</h3>
+{% else %}
+    <h3>Dodawanie nowego klienta </h3>
+{% endif %}
 
 
 <div class="container">
@@ -252,29 +256,6 @@
                 <!-- Wysokość zobowiązania-->
                 {{ form_label(form.alimonyAmount, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.alimonyAmount) }}
-            </div>
-
-            <div class="form-group">
-                <!-- Czy posiada kredyt-->
-                <label class="control-label">Czy posiada kredyt</label>
-                <!-- ?????????
-                         <label for="bool">Czy posiada kredyt</label>
-                        <select class="bool">
-                            <option>Tak</option>
-                            <option selected>Nie</option>
-                        </select> -->
-
-            </div>
-
-            <div class="form-group">
-                <!-- Czy Posiada Jakiś majątek-->
-                <label class="control-label">Czy Posiada Jakiś majątek</label>
-                <!-- ?????????
-                        <label for="bool">Czy Posiada Jakiś majątek</label>
-                        <select class="bool">
-                            <option>Tak</option>
-                            <option selected>Nie</option>
-                        </select> -->
             </div>
 
             <div class="form-group">

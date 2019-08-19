@@ -45,6 +45,10 @@
                     <td>
                         {{credit.profitMargin}}
                     </td>
+                    <td>
+                        <a href="{{ url('lead_credit_edit', {leadId: lead.id, creditId: credit.id}) }}">Edytuj</a>
+                        <a href="{{ url('lead_credit_remove', {leadId: lead.id, creditId: credit.id}) }}">Usuń</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

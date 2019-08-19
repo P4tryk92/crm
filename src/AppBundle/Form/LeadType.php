@@ -52,7 +52,7 @@ class LeadType extends AbstractType
             ->add('typeOfWorkContract', TextType::class, ['label' => 'Rodzaj umowy na jaką jest zatrudniony', 'attr' => ['class' => 'form-control']])
             ->add('startWorkContractDate', DateType::class, ['widget' => 'single_text', 'label' => 'Data zawarcia umowy', 'attr' => ['class' => 'form-control']])
             ->add('endWorkContractDate', DateType::class, ['widget' => 'single_text', 'label' => 'Do kiedy obowiązuje', 'attr' => ['class' => 'form-control']])
-            ->add('alimony', TextType::class, ['label' => 'Czy ma zobowiązanie alimentowe', 'attr' => ['class' => 'form-control']])
+            ->add('alimony', CheckboxType::class, ['required' => false, 'label' => 'Czy ma zobowiązanie alimentowe', 'attr' => ['class' => 'form-control']])
             ->add('alimonyDateFrom', DateType::class, ['required' => false,'widget' => 'single_text', 'label' => 'Zobowiązanie alimentowe data od', 'attr' => ['class' => 'form-control']])
             ->add('alimonyDateTo', DateType::class, ['required' => false,'widget' => 'single_text', 'label' => 'Zobowiązanie alimentowe data od', 'attr' => ['class' => 'form-control']])
             ->add('alimonyAmount', IntegerType::class, ['required' => false,'label' => 'Wysokość zobowiązania', 'attr' => ['class' => 'form-control']])

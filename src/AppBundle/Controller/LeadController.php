@@ -59,6 +59,47 @@ class LeadController extends BaseController
         ]);
     }
 
+    public function editAction (Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lead = $em->getRepository('AppBundle:Lead')->findOneById($id);
+
+        $form = $this->createForm(LeadType::class, $lead);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $lead = $form->getData();
+            $lead->setCreatedAt(new \DateTime());
+            $lead->setUpdatedAt(new \DateTime());
+            $em->persist($lead);
+            $em->flush();
+
+            return $this->redirectToRoute('lead_index'); 
+        }
+
+        return $this->render('lead/new.html.twig', [
+            'form' => $form->createView(),
+            'lead' => $lead,
+            'edit' => 1
+        ]);
+    }
+
+    public function removeAction (Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lead = $em->getRepository('AppBundle:Lead')->findOneById($id);
+
+        if (!$lead) {
+            return $this->redirectToRoute('lead_index');
+        }
+
+        $em->remove($lead);
+        $em->flush();
+
+        return $this->redirectToRoute('lead_index');
+    }
+
     public function newCreditAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -69,6 +110,34 @@ class LeadController extends BaseController
         }
 
         $credit = new Credit();
+
+        $form = $this->createForm(CreditType::class, $credit);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $credit = $form->getData();
+            $credit->setLead($lead);
+            
+            $em->persist($credit);
+            $em->flush();
+
+            return $this->redirectToRoute('lead_credit_index', ['id' => $lead->getId()]);
+        }
+
+        return $this->render('lead/credit/new.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    public function editCreditAction(Request $request, $leadId, $creditId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lead = $em->getRepository('AppBundle:Lead')->findOneById($leadId);
+        $credit = $em->getRepository('AppBundle:Credit')->findOneById($creditId);
+
+        if (!$lead || !$credit) {
+            return $this->redirectToRoute('lead_index'); 
+        }
 
         $form = $this->createForm(CreditType::class, $credit);
         $form->handleRequest($request);
@@ -86,7 +155,24 @@ class LeadController extends BaseController
 
         return $this->render('lead/credit/new.html.twig', [
             'form' => $form->createView(),
+            'edit' => 1
         ]);
+    }
+
+    public function removeCreditAction(Request $request, $leadId, $creditId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $lead = $em->getRepository('AppBundle:Lead')->findOneById($leadId);
+        $credit = $em->getRepository('AppBundle:Credit')->findOneById($creditId);
+
+        if (!$lead || !$credit) {
+            return $this->redirectToRoute('lead_index'); 
+        }
+
+        $em->remove($credit);
+        $em->flush();
+
+        return $this->redirectToRoute('lead_credit_index', ['id' => $lead->getId()]);
     }
 
     public function indexCreditAction(Request $request, $id, $page)
