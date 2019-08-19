@@ -21,6 +21,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/204a798f93.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 
@@ -53,20 +54,21 @@
           <input class="form-control" type="text" placeholder="Search">
           <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <h4 class="ml-5">Witaj {{ app.user.firstName }}</h4>
         <ul class="navbar-nav custom">
             
-          <li class="nav-item dropdown">
-            
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false"><img class="user-img"
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"></a>
-            <div class="dropdown-menu" aria-labelledby="dropdown03">
-              <a class="dropdown-item" href="{{ url('user_index') }}"><i class="fas fa-cogs"></i> Ustawienia</a>
-              <a class="dropdown-item" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Wyloguj się</a>
-            </div>
-          </li>
-        </ul>
+            <li class="nav-item dropdown">
+              
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"><img class="user-img"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"></a>
+              <div class="dropdown-menu" aria-labelledby="dropdown03">
+                <a class="dropdown-item" href="{{ url('user_index') }}"><i class="fas fa-cogs"></i> Ustawienia</a>
+                <a class="dropdown-item" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Wyloguj się</a>
+              </div>
+            </li>
+          </ul>
+        <h4 class="ml-2">Witaj {{ app.user.firstName }}</h4>
+       
 
       </div>
     </nav>
