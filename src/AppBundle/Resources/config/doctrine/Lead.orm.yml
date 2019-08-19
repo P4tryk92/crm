@@ -167,12 +167,16 @@ AppBundle\Entity\Lead:
     credits:
       targetEntity: Credit
       mappedBy: lead
+      cascade: ["persist"]
     wealth:
       targetEntity: Wealth
       mappedBy: lead
+      cascade: ["persist"]
     wealthByAppraiser:
       targetEntity: WealthByAppraiser
       mappedBy: lead
+      cascade: ["persist"]
     shares:
       targetEntity: Shares
       mappedBy: lead
+      cascade: ["persist"]
