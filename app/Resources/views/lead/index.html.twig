@@ -1,37 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block body %} 
+<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('lead_new') }}">Dodaj nowego klienta</a></button>
+    
 
-    <a href="{{ url('lead_new') }}">Dodaj nowego klienta</a>
-    <div>
-        Klienci:
-    </div>
-    <br>
-
-    <table id="" class="">
+    <div class="table-responsive">   
+    <table class="table table-striped" style="font-size:12px;">
         <thead>
             <tr>
-                <th style="width:50px;">Liczba klientów<br />({{ leads|length }})</th>
-                <th style="width:50px;">Id</th>
-                <th style="width:50px;">Imię</th>
-                <th style="width:100px;">Nazwisko</th>
-                <th style="width:100px;">Pesel</th>
-                <th style="width:100px;">Numer telefonu</th>
-                <th style="width:100px;">Zarobki</th>
-                <th style="width:150px;">Kredyt od</th>
-                <th style="width:150px;">Wysokość kredytu</th>
-                <th style="width:150px;">Wysokość raty kredytu</th>
-                <th style="width:100px;">Bank</th>
-                <th style="width:100px;">Status</th>
-                <th style="width:150px;">Akcje</th>
+                <th>Liczba klientów<br />({{ leads|length }})</th>
+                <th>Id</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Pesel</th>
+                <th>Numer telefonu</th>
+                <th>Zarobki</th>
+                <th>Kredyt od</th>
+                <th>Wysokość kredytu</th>
+                <th>Wysokość raty kredytu</th>
+                <th>Bank</th>
+                <th>Status</th>
+                <th>Akcje</th>
             </tr>
         </thead>
         <tbody>
             {% for lead in leads %}
                 <tr class="{{lead.id}}-row">
-                    <td>
-                        {{ loop.index + (page - 1 ) * perPage }}
-                    </td>
+                    <th scope="row">{{ loop.index + (page - 1 ) * perPage }}</th>
+                        
+                    
                     <td>
                         {{lead.id}}
                     </td>
@@ -66,15 +63,25 @@
                         {{lead.isActive}}
                     </td>
                     <td>
-                        <a href="{{ url('lead_edit', {id: lead.id}) }}">Edytuj</a>
-                        <a href="{{ url('lead_remove', {id: lead.id}) }}">Usuń</a>
-                        <a href="{{ url('lead_credit_index', {id: lead.id}) }}">Kredyty</a>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
+                                        href="{{ url('lead_edit', {id: lead.id}) }}">Edytuj</a></button>
+                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                            
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ url('lead_remove', {id: lead.id}) }}">Usuń</a>
+                                    <a class="dropdown-item" href="{{ url('lead_credit_index', {id: lead.id}) }}">Kredyt</a>
+                            
+                                </div>                 
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-
+</div>
+         
 {% endblock %}
 
 {% block stylesheets %}
