@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <a href="{{ url('lead_wealth_by_appraiser_new', {id: lead.id}) }}">Dodaj nowy majątek</a>
+    <a href="{{ url('wealth_by_appraiser_new', {id: lead.id}) }}">Dodaj nowy majątek</a>
     <div>
         Majątek:
     </div>
@@ -30,8 +30,8 @@
                         {{wealth.estimatedValuation}}
                     </td>
                     <td>
-                        <a href="{{ url('lead_wealth_by_appraiser_edit', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Edytuj</a>
-                        <a href="{{ url('lead_wealth_by_appraiser_remove', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Usuń</a>
+                        <a href="{{ url('wealth_by_appraiser_edit', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Edytuj</a>
+                        <a href="{{ url('wealth_by_appraiser_remove', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Usuń</a>
                     </td>
                 </tr>
             {% endfor %}

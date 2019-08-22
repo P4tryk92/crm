@@ -54,54 +54,54 @@ lead_remove:
     requirements:
         id: \d+
 
-lead_credit_index:
+credit_index:
     path:     /klient/{id}/kredyty/{page}
-    defaults: { _controller: AppBundle:Lead:indexCredit, page: 1  }
+    defaults: { _controller: AppBundle:Credit:index, page: 1  }
     requirements:
         page: \d+
 
-lead_credit_new:
+credit_new:
     path:     /klient/{id}/kredyt-nowy
-    defaults: { _controller: AppBundle:Lead:newCredit }
+    defaults: { _controller: AppBundle:Credit:new }
     requirements:
         id: \d+
 
-lead_credit_edit:
+credit_edit:
     path:     /klient/{leadId}/kredyt-edytuj/{creditId}
-    defaults: { _controller: AppBundle:Lead:editCredit }
+    defaults: { _controller: AppBundle:Credit:edit }
     requirements:
         leadId: \d+
         creditId: \d+
 
-lead_credit_remove:
+credit_remove:
     path:     /klient/{leadId}/kredyt-usun/{creditId}
-    defaults: { _controller: AppBundle:Lead:removeCredit }
+    defaults: { _controller: AppBundle:Credit:remove }
     requirements:
         leadId: \d+
         creditId: \d+
 
-lead_wealth_by_appraiser_index:
+wealth_by_appraiser_index:
     path:     /klient/{id}/majatek-rzeczoznawca/{page}
-    defaults: { _controller: AppBundle:Lead:indexWealthByAppraiser, page: 1  }
+    defaults: { _controller: AppBundle:WealthByAppraiser:index, page: 1  }
     requirements:
         page: \d+
 
-lead_wealth_by_appraiser_new:
+wealth_by_appraiser_new:
     path:     /klient/{id}/majatek-rzeczoznawca/nowy
-    defaults: { _controller: AppBundle:Lead:newWealthByAppraiser }
+    defaults: { _controller: AppBundle:WealthByAppraiser:new }
     requirements:
         id: \d+
 
-lead_wealth_by_appraiser_edit:
+wealth_by_appraiser_edit:
     path:     /klient/{leadId}/majatek-rzeczoznawca/edytuj/{wealthByAppraiserId}
-    defaults: { _controller: AppBundle:Lead:editWealthByAppraiser }
+    defaults: { _controller: AppBundle:WealthByAppraiser:edit }
     requirements:
         leadId: \d+
         wealthByAppraiserId: \d+
 
-lead_wealth_by_appraiser_remove:
+wealth_by_appraiser_remove:
     path:     /klient/{leadId}/majatek-rzeczoznawca/usun/{wealthByAppraiserId}
-    defaults: { _controller: AppBundle:Lead:removeWealthByAppraiser }
+    defaults: { _controller: AppBundle:WealthByAppraiser:remove }
     requirements:
         leadId: \d+
         wealthByAppraiserId: \d+
