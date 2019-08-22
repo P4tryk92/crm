@@ -15,34 +15,39 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <!-- Imię -->
+                <!-- Imię -->                
                 {{ form_label(form.firstName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.firstName) }}
+                <span class="text-danger" id="lead_firstName_error" style="display:none;">Imię musi posiadać co najmniej 3 litery.</span>
+                
             </div>
 
             <div class="form-group">
                 <!-- Nazwisko -->
                 {{ form_label(form.lastName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.lastName) }}
-
+                <span class="text-danger" id="lead_lastName_error" style="display:none;">Nazwisko musi posiadać co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Pesel -->
                 {{ form_label(form.pin, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.pin) }}
+                <span class="text-danger" id="lead_pin_error" style="display:none;">Pesel musi posiadać dokładnie 11 liczb dodatnich.</span>
             </div>
 
             <div class="form-group">
                 <!-- Numer telefonu-->
                 {{ form_label(form.phoneNumber, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.phoneNumber) }}
+                <span class="text-danger" id="lead_phoneNumber_error" style="display:none;">Numer telefonu musi posiadać dokładnie 9 liczb dodatnich.</span>
             </div>
 
             <div class="form-group">
                 <!-- Email-->
                 {{ form_label(form.email, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.email) }}
+                <span class="text-danger" id="lead_email_error" style="display:none;">Wpisz poprawny email (przykład agata@interia.pl).</span>
             </div>
 
             <div class="form-group">
@@ -55,12 +60,14 @@
                 <!-- Miejsce urodzenia -->
                 {{ form_label(form.birthPlace, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.birthPlace) }}
+                <span class="text-danger" id="lead_birthPlace_error" style="display:none;">Miejscowość musi posiadać co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Seria i numer dowodu osobistego -->
                 {{ form_label(form.idCard, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.idCard) }}
+                <span class="text-danger" id="lead_idCard_error" style="display:none;">Seria i numer dowodu osobistego należy wprowadzić w formacie AAA 123456.</span>
             </div>
 
             <div class="form-group">
@@ -73,18 +80,21 @@
                 <!-- Imię ojca-->
                 {{ form_label(form.fatherFirstName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.fatherFirstName) }}
+                <span class="text-danger" id="lead_fatherFirstName_error" style="display:none;">Imię musi posiadać co najmniej 3 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Imię matki-->
                 {{ form_label(form.motherFirstName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.motherFirstName) }}
+                <span class="text-danger" id="lead_motherFirstName_error" style="display:none;">Imię musi posiadać co najmniej 3 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Nazwisko rodowe matki -->
                 {{ form_label(form.motherFamilySurname, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.motherFamilySurname) }}
+                <span class="text-danger" id="lead_motherFamilySurname_error" style="display:none;">Nazwisko musi posiadać co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
@@ -103,55 +113,63 @@
                 <!-- Adres zamieszkania (ulica i numer budynku) -->
                 {{ form_label(form.addressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.addressStreetAndNumber) }}
+                <span class="text-danger" id="lead_addressStreetAndNumber_error" style="display:none;">Wpisz poprawny adres (przykład os.kalinowe 19/50).</span>
             </div>
 
             <div class="form-group">
                 <!-- Kod pocztowy -->
                 {{ form_label(form.addressPostCode, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.addressPostCode) }}
+                <span class="text-danger" id="lead_addressPostCode_error" style="display:none;">Kod pocztowy trzeba zapisac w formacie 01-123.</span>
             </div>
 
             <div class="form-group">
                 <!-- Miejscowość -->
                 {{ form_label(form.addressCity, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.addressCity) }}
+                <span class="text-danger" id="lead_addressCity_error" style="display:none;">Miejscowość musi posiadać co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Województwo-->
                 {{ form_label(form.voivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.voivodeship) }}
+                <span class="text-danger" id="lead_voivodeship_error" style="display:none;">Województwo musi posiadać co najmniej 4 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Obywatelstwo-->
                 {{ form_label(form.nationality, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.nationality) }}
+                <span class="text-danger" id="lead_nationality_error" style="display:none;">Obywatelstwo musi posiadać co najmniej 3 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Adres do Korespondencji (ulica i number budynku)-->
-                {{ form_label(form.correspondenceAddressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}})
-                }}
+                {{ form_label(form.correspondenceAddressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
+                <span class="text-danger" id="lead_correspondenceAddressStreetAndNumber_error" style="display:none;">Wpisz poprawny adres (przykład Prawnicza 30).</span>
             </div>
 
             <div class="form-group">
                 <!-- Kod pocztowy do Korespondencji-->
                 {{ form_label(form.correspondenceAddressPostCode, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.correspondenceAddressPostCode) }}
+                <span class="text-danger" id="lead_correspondenceAddressPostCode_error" style="display:none;">Kod pocztowy trzeba zapisac w formacie 01-123.</span>
             </div>
 
             <div class="form-group">
                 <!-- Miejscowość do Korespondencji-->
                 {{ form_label(form.correspondenceAddressCity, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.correspondenceAddressCity) }}
+                <span class="text-danger" id="lead_correspondenceAddressCity_error" style="display:none;">Miejscowość musi posiadać co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Województwo do Korespondencji-->
                 {{ form_label(form.correspondenceVoivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.correspondenceVoivodeship) }}
+                <span class="text-danger" id="lead_correspondenceVoivodeship_error" style="display:none;">Województwo musi posiadać co najmniej 4 litery.</span>
             </div>
 
             <div class="form-group">
@@ -170,36 +188,42 @@
                 <!-- Branża w której pracuje -->
                 {{ form_label(form.workIndustry, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.workIndustry) }}
+                <span class="text-danger" id="lead_workIndustry_error" style="display:none;">Nazwa branży musi mieć co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Nazwa firmy-->
                 {{ form_label(form.companyName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.companyName) }}
+                <span class="text-danger" id="lead_companyName_error" style="display:none;">Nazwa firmy musi mieć co najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
                 <!-- Staż pracy w miesiącach-->
                 {{ form_label(form.workLengthExperience, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.workLengthExperience) }}
+                <span class="text-danger" id="lead_workLengthExperience_error" style="display:none;">Staż pracy musi być większy od 0.</span>
             </div>
 
             <div class="form-group">
                 <!-- Wysokość wynagrodzeń stałych netto-->
                 {{ form_label(form.fixedSalaryNet, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.fixedSalaryNet) }}
+                <span class="text-danger" id="lead_fixedSalaryNet_error" style="display:none;">Wysokość wynagrodzenia nie może być liczbą ujemną.</span>
             </div>
 
             <div class="form-group">
                 <!-- Szacowana wysokość wynagrodzeń doraźnych netto-->
                 {{ form_label(form.estimatedTimeSalaryNet, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.estimatedTimeSalaryNet) }}
+                <span class="text-danger" id="lead_estimatedTimeSalaryNet_error" style="display:none;">Wysokość wynagrodzenia nie może być liczbą ujemną.</span>
             </div>
 
             <div class="form-group">
                 <!-- Ilość osób w gospodarstwie-->
                 {{ form_label(form.numberOfPeopleInTheHousehold, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.numberOfPeopleInTheHousehold) }}
+                <span class="text-danger" id="lead_numberOfPeopleInTheHousehold_error" style="display:none;">Ilość osób w gospodarstwie musi być większa od 0.</span>
             </div>
 
             <div class="form-group">
@@ -220,6 +244,7 @@
                 <!-- Rodzaj umowy na jaką jest zatrudniony-->
                 {{ form_label(form.typeOfWorkContract, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.typeOfWorkContract) }}
+                <span class="text-danger" id="lead_typeOfWorkContract_error" style="display:none;">Rodzaj umowy musi mieć minimum 3 litery.</span>
             </div>
 
             <div class="form-group">
@@ -283,22 +308,14 @@
     {% endblock %}
 
     {% block stylesheets %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+            
+    
     {% endblock %}
+    
 
     {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/204a798f93.js"></script>
+             
+    <script src="{{ asset('../js/newClient.js') }}"></script>
 
 
     {% endblock %}

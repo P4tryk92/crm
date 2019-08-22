@@ -9,17 +9,22 @@
   <link rel="icon" type="image/x-icon" href="../../img/crm.png" />
   <link href="{{ asset( '../css/global.css' ) }}" rel="stylesheet" type="text/css" />
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
   <script src="https://kit.fontawesome.com/204a798f93.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -28,6 +33,7 @@
 <body>
   {% block header %}
 
+<<<<<<< HEAD
   <body>
     <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap p-0 shadow" style="position: relative;">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0 ml-3" href="{{ url('homepage') }}"><img class="img-responsive" style="width:40px;" src="../../img/crm.png"></a>
@@ -41,6 +47,42 @@
 
 
       </ul>
+=======
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url('homepage') }}">Dashboard</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Klienci</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown03">
+
+              <a class="dropdown-item" href="{{ url('lead_new') }}">Dodaj nowego</a>
+              <a class="dropdown-item" href="{{ url('lead_index') }}">Klienci</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0">
+          <input class="form-control" type="text" placeholder="Search">
+          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <h4 class="ml-5">Witaj {{ app.user.firstName }}</h4>
+        <ul class="navbar-nav custom">
+
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"><img class="user-img"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png"></a>
+            <div class="dropdown-menu" aria-labelledby="dropdown03">
+              <a class="dropdown-item" href="{{ url('user_index') }}"><i class="fas fa-cogs"></i> Ustawienia</a>
+              <a class="dropdown-item" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Wyloguj się</a>
+            </div>
+          </li>
+        </ul>
+>>>>>>> Nowy klient walidacje
 
     </nav>
 
