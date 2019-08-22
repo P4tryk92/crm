@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <a href="{{ url('wealth_by_appraiser_new', {id: lead.id}) }}">Dodaj nowy majątek wyceniony przez rzeczoznawcę</a>
+    <div>
+        Majątek wyceniony przez rzeczoznawcę:
+    </div>
+    <br>
+
+    <table id="" class="">
+        <thead>
+            <tr>
+                <th style="width:100px;">Liczba<br />({{ wealthsByAppraiser|length }})</th>
+                <th style="width:150px;">Rodzaj majątku</th>
+                <th style="width:150px;">Szacowana wartość</th>
+                <th style="width:150px;">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for wealth in wealthsByAppraiser %}
+                <tr class="{{wealth.id}}-row">
+                    <td>
+                        {{ loop.index + (page - 1 ) * perPage }}
+                    </td>
+                    <td>
+                        {{wealth.type}}
+                    </td>
+                    <td>
+                        {{wealth.estimatedValuation}}
+                    </td>
+                    <td>
+                        <a href="{{ url('wealth_by_appraiser_edit', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Edytuj</a>
+                        <a href="{{ url('wealth_by_appraiser_remove', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Usuń</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block stylesheets %}
+    
+{% endblock %}

@@ -54,28 +54,106 @@ lead_remove:
     requirements:
         id: \d+
 
-lead_credit_index:
+credit_index:
     path:     /klient/{id}/kredyty/{page}
-    defaults: { _controller: AppBundle:Lead:indexCredit, page: 1  }
+    defaults: { _controller: AppBundle:Credit:index, page: 1  }
     requirements:
         page: \d+
 
-lead_credit_new:
+credit_new:
     path:     /klient/{id}/kredyt-nowy
-    defaults: { _controller: AppBundle:Lead:newCredit }
+    defaults: { _controller: AppBundle:Credit:new }
     requirements:
         id: \d+
 
-lead_credit_edit:
+credit_edit:
     path:     /klient/{leadId}/kredyt-edytuj/{creditId}
-    defaults: { _controller: AppBundle:Lead:editCredit }
+    defaults: { _controller: AppBundle:Credit:edit }
     requirements:
         leadId: \d+
         creditId: \d+
 
-lead_credit_remove:
+credit_remove:
     path:     /klient/{leadId}/kredyt-usun/{creditId}
-    defaults: { _controller: AppBundle:Lead:removeCredit }
+    defaults: { _controller: AppBundle:Credit:remove }
     requirements:
         leadId: \d+
         creditId: \d+
+
+wealth_by_appraiser_index:
+    path:     /klient/{id}/majatek-rzeczoznawca/{page}
+    defaults: { _controller: AppBundle:WealthByAppraiser:index, page: 1  }
+    requirements:
+        page: \d+
+
+wealth_by_appraiser_new:
+    path:     /klient/{id}/majatek-rzeczoznawca/nowy
+    defaults: { _controller: AppBundle:WealthByAppraiser:new }
+    requirements:
+        id: \d+
+
+wealth_by_appraiser_edit:
+    path:     /klient/{leadId}/majatek-rzeczoznawca/edytuj/{wealthByAppraiserId}
+    defaults: { _controller: AppBundle:WealthByAppraiser:edit }
+    requirements:
+        leadId: \d+
+        wealthByAppraiserId: \d+
+
+wealth_by_appraiser_remove:
+    path:     /klient/{leadId}/majatek-rzeczoznawca/usun/{wealthByAppraiserId}
+    defaults: { _controller: AppBundle:WealthByAppraiser:remove }
+    requirements:
+        leadId: \d+
+        wealthByAppraiserId: \d+
+
+wealth_index:
+    path:     /klient/{id}/majatek/{page}
+    defaults: { _controller: AppBundle:Wealth:index, page: 1  }
+    requirements:
+        page: \d+
+
+wealth_new:
+    path:     /klient/{id}/majatek/nowy
+    defaults: { _controller: AppBundle:Wealth:new }
+    requirements:
+        id: \d+
+
+wealth_edit:
+    path:     /klient/{leadId}/majatek/edytuj/{wealthId}
+    defaults: { _controller: AppBundle:Wealth:edit }
+    requirements:
+        leadId: \d+
+        wealthId: \d+
+
+wealth_remove:
+    path:     /klient/{leadId}/majatek/usun/{wealthId}
+    defaults: { _controller: AppBundle:Wealth:remove }
+    requirements:
+        leadId: \d+
+        wealthId: \d+
+
+shares_index:
+    path:     /klient/{id}/akcje/{page}
+    defaults: { _controller: AppBundle:Shares:index, page: 1  }
+    requirements:
+        page: \d+
+
+shares_new:
+    path:     /klient/{id}/akcje/nowy
+    defaults: { _controller: AppBundle:Shares:new }
+    requirements:
+        id: \d+
+
+shares_edit:
+    path:     /klient/{leadId}/akcje/edytuj/{sharesId}
+    defaults: { _controller: AppBundle:Shares:edit }
+    requirements:
+        leadId: \d+
+        sharesId: \d+
+
+shares_remove:
+    path:     /klient/{leadId}/akcje/usun/{sharesId}
+    defaults: { _controller: AppBundle:Shares:remove }
+    requirements:
+        leadId: \d+
+        sharesId: \d+

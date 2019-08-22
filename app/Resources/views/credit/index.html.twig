@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <a href="{{ url('lead_credit_new', {id: lead.id}) }}">Dodaj nowy kredyt</a>
+    <a href="{{ url('credit_new', {id: lead.id}) }}">Dodaj nowy kredyt</a>
     <div>
         Kredyty:
     </div>
@@ -46,8 +46,8 @@
                         {{credit.profitMargin}}
                     </td>
                     <td>
-                        <a href="{{ url('lead_credit_edit', {leadId: lead.id, creditId: credit.id}) }}">Edytuj</a>
-                        <a href="{{ url('lead_credit_remove', {leadId: lead.id, creditId: credit.id}) }}">Usuń</a>
+                        <a href="{{ url('credit_edit', {leadId: lead.id, creditId: credit.id}) }}">Edytuj</a>
+                        <a href="{{ url('credit_remove', {leadId: lead.id, creditId: credit.id}) }}">Usuń</a>
                     </td>
                 </tr>
             {% endfor %}
