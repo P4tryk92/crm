@@ -40,28 +40,23 @@ class LeadType extends AbstractType
             ->add('addressCity', TextType::class, ['label' => 'Miejscowość', 'attr' => ['class' => 'form-control']])
             ->add('voivodeship', TextType::class, ['label' => 'Województwo', 'attr' => ['class' => 'form-control']])
             ->add('nationality', TextType::class, ['label' => 'Obywatelstwo', 'attr' => ['class' => 'form-control']])
-            ->add('correspondenceAddressStreetAndNumber', TextType::class, ['label' => 'Adres do Korespondencji (ulica i number budynku)', 'attr' => ['class' => 'form-control']])
-            ->add('correspondenceAddressPostCode', TextType::class, ['label' => 'Kod pocztowy do Korespondencji', 'attr' => ['class' => 'form-control']])
-            ->add('correspondenceAddressCity', TextType::class, ['label' => 'Miejscowość do Korespondencji', 'attr' => ['class' => 'form-control']])
-            ->add('correspondenceVoivodeship', TextType::class, ['label' => 'Województwo do Korespondencji', 'attr' => ['class' => 'form-control']])
-            ->add('dateFromLivesAtCurrentAddress', DateType::class, ['widget' => 'single_text', 'label' => 'Data od kiedy mieszka pod aktualnym adresem', 'attr' => ['class' => 'form-control']])
-            ->add('fixedSalaryNet', IntegerType::class, ['label' => 'Wysokość wynagrodzeń stałych netto', 'attr' => ['class' => 'form-control']])
-            ->add('estimatedTimeSalaryNet', IntegerType::class, ['label' => 'Szacowana wysokość wynagrodzeń doraźnych netto', 'attr' => ['class' => 'form-control']])
+            ->add('correspondenceAddressStreetAndNumber', TextType::class, ['required' => false,'label' => 'Adres do Korespondencji (ulica i number budynku)', 'attr' => ['class' => 'form-control']])
+            ->add('correspondenceAddressPostCode', TextType::class, ['required' => false,'label' => 'Kod pocztowy do Korespondencji', 'attr' => ['class' => 'form-control']])
+            ->add('correspondenceAddressCity', TextType::class, ['required' => false,'label' => 'Miejscowość do Korespondencji', 'attr' => ['class' => 'form-control']])
+            ->add('correspondenceVoivodeship', TextType::class, ['required' => false,'label' => 'Województwo do Korespondencji', 'attr' => ['class' => 'form-control']])
+            ->add('dateFromLivesAtCurrentAddress', DateType::class, ['required' => false,'widget' => 'single_text', 'label' => 'Data od kiedy mieszka pod aktualnym adresem', 'attr' => ['class' => 'form-control']])
+            ->add('fixedSalaryNet', IntegerType::class, ['label' => 'Wysokość wynagrodzeń stałych netto w zł.', 'attr' => ['class' => 'form-control']])
+            ->add('estimatedTimeSalaryNet', IntegerType::class, ['label' => 'Szacowana wysokość wynagrodzeń doraźnych netto w zł', 'attr' => ['class' => 'form-control']])
             ->add('numberOfPeopleInTheHousehold', IntegerType::class, ['label' => 'Ilość osób w gospodarstwie', 'attr' => ['class' => 'form-control']])
-            ->add('totalFamilyIncome', IntegerType::class, ['required' => false,'label' => 'Czy jesteś jedynym żródłem dochodu dla gospodarstwa', 'attr' => ['class' => 'form-control']])
+            ->add('totalFamilyIncome', IntegerType::class, ['required' => false,'label' => 'Czy jesteś jedynym żródłem dochodu dla gospodarstwa?', 'attr' => ['class' => 'form-control']])
             ->add('typeOfWorkContract', TextType::class, ['label' => 'Rodzaj umowy na jaką jest zatrudniony', 'attr' => ['class' => 'form-control']])
             ->add('startWorkContractDate', DateType::class, ['widget' => 'single_text', 'label' => 'Data zawarcia umowy', 'attr' => ['class' => 'form-control']])
             ->add('endWorkContractDate', DateType::class, ['widget' => 'single_text', 'label' => 'Do kiedy obowiązuje', 'attr' => ['class' => 'form-control']])
             ->add('alimony', CheckboxType::class, ['required' => false, 'label' => 'Czy ma zobowiązanie alimentowe', 'attr' => ['class' => 'form-control']])
             ->add('alimonyDateFrom', DateType::class, ['required' => false,'widget' => 'single_text', 'label' => 'Zobowiązanie alimentowe data od', 'attr' => ['class' => 'form-control']])
             ->add('alimonyDateTo', DateType::class, ['required' => false,'widget' => 'single_text', 'label' => 'Zobowiązanie alimentowe data od', 'attr' => ['class' => 'form-control']])
-            ->add('alimonyAmount', IntegerType::class, ['required' => false,'label' => 'Wysokość zobowiązania', 'attr' => ['class' => 'form-control']])
-            
-
-
-
-
-            ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'form-control']])
+            ->add('alimonyAmount', IntegerType::class, ['required' => false,'label' => 'Wysokość zobowiązania w zł.', 'attr' => ['class' => 'form-control']])
+            ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'btn btn-primary']])
             ;
     }
     
