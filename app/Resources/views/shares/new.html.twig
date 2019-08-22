@@ -3,9 +3,9 @@
 {% block body %}
 
 {% if edit is defined %}
-    <h3>Edycja majątku </h3>
+    <h3>Edycja akcji </h3>
 {% else %}
-    <h3>Dodawanie nowego majątku </h3>
+    <h3>Dodawanie nowych akcji </h3>
 {% endif %}
 
 <div class="container">
@@ -13,17 +13,22 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <!-- Rodzaj majątku -->
-                {{ form_label(form.type, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.type) }}
+                <!-- Nazwa i rodzaj -->
+                {{ form_label(form.nameAndType, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.nameAndType) }}
+            </div>
+            <div class="form-group">
+                <!-- Ilość -->
+                {{ form_label(form.numberOfSharesHeld, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.numberOfSharesHeld) }}
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="form-group">
-                <!-- Szacowana wartość -->
-                {{ form_label(form.estimatedValuation, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.estimatedValuation) }}
+                <!-- Wartość -->
+                {{ form_label(form.value, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.value) }}
             </div>
             <div class="form-group">
                 <!-- Submit Button -->

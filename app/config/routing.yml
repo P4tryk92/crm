@@ -131,3 +131,29 @@ wealth_remove:
     requirements:
         leadId: \d+
         wealthId: \d+
+
+shares_index:
+    path:     /klient/{id}/akcje/{page}
+    defaults: { _controller: AppBundle:Shares:index, page: 1  }
+    requirements:
+        page: \d+
+
+shares_new:
+    path:     /klient/{id}/akcje/nowy
+    defaults: { _controller: AppBundle:Shares:new }
+    requirements:
+        id: \d+
+
+shares_edit:
+    path:     /klient/{leadId}/akcje/edytuj/{sharesId}
+    defaults: { _controller: AppBundle:Shares:edit }
+    requirements:
+        leadId: \d+
+        sharesId: \d+
+
+shares_remove:
+    path:     /klient/{leadId}/akcje/usun/{sharesId}
+    defaults: { _controller: AppBundle:Shares:remove }
+    requirements:
+        leadId: \d+
+        sharesId: \d+
