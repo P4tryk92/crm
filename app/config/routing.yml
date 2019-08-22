@@ -105,3 +105,29 @@ wealth_by_appraiser_remove:
     requirements:
         leadId: \d+
         wealthByAppraiserId: \d+
+
+wealth_index:
+    path:     /klient/{id}/majatek/{page}
+    defaults: { _controller: AppBundle:Wealth:index, page: 1  }
+    requirements:
+        page: \d+
+
+wealth_new:
+    path:     /klient/{id}/majatek/nowy
+    defaults: { _controller: AppBundle:Wealth:new }
+    requirements:
+        id: \d+
+
+wealth_edit:
+    path:     /klient/{leadId}/majatek/edytuj/{wealthId}
+    defaults: { _controller: AppBundle:Wealth:edit }
+    requirements:
+        leadId: \d+
+        wealthId: \d+
+
+wealth_remove:
+    path:     /klient/{leadId}/majatek/usun/{wealthId}
+    defaults: { _controller: AppBundle:Wealth:remove }
+    requirements:
+        leadId: \d+
+        wealthId: \d+

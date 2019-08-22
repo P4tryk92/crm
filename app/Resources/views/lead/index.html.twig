@@ -68,13 +68,12 @@
                                     href="{{ url('lead_edit', {id: lead.id}) }}">Edytuj</a></button>
                             <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                        
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{{ url('lead_remove', {id: lead.id}) }}">Usuń</a>
                                 <a class="dropdown-item" href="{{ url('credit_index', {id: lead.id}) }}">Kredyt</a>
+                                <a class="dropdown-item" href="{{ url('wealth_index', {id: lead.id}) }}">Majątek</a>
                                 <a class="dropdown-item" href="{{ url('wealth_by_appraiser_index', {id: lead.id}) }}">Majątek wyceniony przez rzeczoznawcę</a>
-                        
                             </div> 
                         </div>
                     </td>

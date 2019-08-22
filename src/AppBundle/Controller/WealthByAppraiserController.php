@@ -34,7 +34,7 @@ class WealthByAppraiserController extends BaseController
 
         $paginator = new Paginator($query);
         
-        return $this->render('lead/wealthByAppraiser/index.html.twig', [
+        return $this->render('wealthByAppraiser/index.html.twig', [
             'lead'  => $lead,
             'wealthsByAppraiser' => $paginator,
             'perPage' => $this->perPage,
@@ -66,7 +66,7 @@ class WealthByAppraiserController extends BaseController
             return $this->redirectToRoute('wealth_by_appraiser_index', ['id' => $lead->getId()]);
         }
 
-        return $this->render('lead/wealthByAppraiser/new.html.twig', [
+        return $this->render('wealthByAppraiser/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -95,7 +95,7 @@ class WealthByAppraiserController extends BaseController
             return $this->redirectToRoute('wealth_by_appraiser_index', ['id' => $lead->getId()]);
         }
 
-        return $this->render('lead/wealthByAppraiser/new.html.twig', [
+        return $this->render('wealthByAppraiser/new.html.twig', [
             'form' => $form->createView(),
             'edit' => 1
         ]);

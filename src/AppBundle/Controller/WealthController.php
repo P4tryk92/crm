@@ -6,12 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Entity\Credit;
-use AppBundle\Form\CreditType;
+use AppBundle\Entity\Wealth;
+use AppBundle\Form\WealthType;
 use AppBundle\Controller\BaseController;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
-class CreditController extends BaseController
+class WealthController extends BaseController
 {
     public function indexAction(Request $request, $id, $page)
     {
@@ -24,7 +24,7 @@ class CreditController extends BaseController
 
         $this->setPerPage();
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Credit')
+        $query = $this->getDoctrine()->getRepository('AppBundle:Wealth')
                     ->createQueryBuilder('c')
                     ->where('c.lead = :leadId')
                     ->setParameter('leadId', $id)
@@ -34,9 +34,9 @@ class CreditController extends BaseController
 
         $paginator = new Paginator($query);
         
-        return $this->render('credit/index.html.twig', [
+        return $this->render('wealth/index.html.twig', [
             'lead'  => $lead,
-            'credits' => $paginator,
+            'wealths' => $paginator,
             'perPage' => $this->perPage,
             'page' => $page,
         ]);
@@ -51,69 +51,69 @@ class CreditController extends BaseController
             return $this->redirectToRoute('lead_index'); 
         }
 
-        $credit = new Credit();
+        $wealth = new Wealth();
 
-        $form = $this->createForm(CreditType::class, $credit);
+        $form = $this->createForm(WealthType::class, $wealth);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $credit = $form->getData();
-            $credit->setLead($lead);
+            $wealth = $form->getData();
+            $wealth->setLead($lead);
             
-            $em->persist($credit);
+            $em->persist($wealth);
             $em->flush();
 
-            return $this->redirectToRoute('credit_index', ['id' => $lead->getId()]);
+            return $this->redirectToRoute('wealth_index', ['id' => $lead->getId()]);
         }
 
-        return $this->render('credit/new.html.twig', [
+        return $this->render('wealth/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
-    public function editAction(Request $request, $leadId, $creditId)
+    public function editAction(Request $request, $leadId, $wealthId)
     {
         $em = $this->getDoctrine()->getManager();
         $lead = $em->getRepository('AppBundle:Lead')->findOneById($leadId);
-        $credit = $em->getRepository('AppBundle:Credit')->findOneById($creditId);
+        $wealth = $em->getRepository('AppBundle:Wealth')->findOneById($wealthId);
 
-        if (!$lead || !$credit) {
+        if (!$lead || !$wealth) {
             return $this->redirectToRoute('lead_index'); 
         }
 
-        $form = $this->createForm(CreditType::class, $credit);
+        $form = $this->createForm(WealthType::class, $wealth);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $credit = $form->getData();
-            $credit->setLead($lead);
+            $wealth = $form->getData();
+            $wealth->setLead($lead);
             
-            $em->persist($lead);
+            $em->persist($wealth);
             $em->flush();
 
-            return $this->redirectToRoute('credit_index', ['id' => $lead->getId()]);
+            return $this->redirectToRoute('wealth_index', ['id' => $lead->getId()]);
         }
 
-        return $this->render('credit/new.html.twig', [
+        return $this->render('wealth/new.html.twig', [
             'form' => $form->createView(),
             'edit' => 1
         ]);
     }
 
-    public function removeAction(Request $request, $leadId, $creditId)
+    public function removeAction(Request $request, $leadId, $wealthId)
     {
         $em = $this->getDoctrine()->getManager();
         $lead = $em->getRepository('AppBundle:Lead')->findOneById($leadId);
-        $credit = $em->getRepository('AppBundle:Credit')->findOneById($creditId);
+        $wealth = $em->getRepository('AppBundle:Wealth')->findOneById($wealthId);
 
-        if (!$lead || !$credit) {
+        if (!$lead || !$wealth) {
             return $this->redirectToRoute('lead_index'); 
         }
 
-        $em->remove($credit);
+        $em->remove($wealth);
         $em->flush();
 
-        return $this->redirectToRoute('credit_index', ['id' => $lead->getId()]);
+        return $this->redirectToRoute('wealth_index', ['id' => $lead->getId()]);
     }
 }
