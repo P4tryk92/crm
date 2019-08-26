@@ -47,17 +47,21 @@
                     <td>
                         {{lead.fixedSalaryNet}}
                     </td>
+                    {% set credit = lead.credits.last() %}
                     <td>
-                        TO DO BACKEND grantingDate
+                        {{ credit.grantingDate|date("d-m-Y") }}
+                        {% if lead.credits|length > 1 %}
+                            <span>!!</span>
+                        {% endif %}
                     </td>
                     <td>
-                        TO DO BACKEND amount
+                        {{ credit.amount }}
                     </td>
                     <td>
-                        TO DO BACKEND monthlyInstallment
+                        {{ credit.monthlyInstallment }}
                     </td>
                     <td>
-                        TO DO BACKEND bankName
+                        {{ credit.bankName }}
                     </td>
                     <td>
                         {{lead.isActive}}
