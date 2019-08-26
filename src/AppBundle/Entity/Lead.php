@@ -23,7 +23,7 @@ class Lead
     private $lastName;
 
     /**
-     * @var integer
+     * @var string
      */
     private $pin;
 
@@ -314,7 +314,7 @@ class Lead
     /**
      * Set pin
      *
-     * @param integer $pin
+     * @param string $pin
      *
      * @return Lead
      */
@@ -328,7 +328,7 @@ class Lead
     /**
      * Get pin
      *
-     * @return integer
+     * @return string
      */
     public function getPin()
     {
