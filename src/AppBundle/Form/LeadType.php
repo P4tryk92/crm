@@ -18,7 +18,7 @@ class LeadType extends AbstractType
         $builder
             ->add('firstName', TextType::class, ['label' => 'Imię', 'attr' => ['class' => 'form-control']])
             ->add('lastName', TextType::class, ['label' => 'Nazwisko', 'attr' => ['class' => 'form-control']])
-            ->add('pin', IntegerType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-control']])
+            ->add('pin', TextType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-control']])
             ->add('phoneNumber', IntegerType::class, ['label' => 'Numer telefonu', 'attr' => ['class' => 'form-control']])
             ->add('email', TextType::class, ['label' => 'Adres mailowy', 'attr' => ['class' => 'form-control']])
             ->add('isActive', CheckboxType::class, ['required' => false, 'label' => 'Aktywny?', 'attr' => ['class' => 'form-control']])

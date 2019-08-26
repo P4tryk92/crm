@@ -48,24 +48,32 @@
                         {{lead.fixedSalaryNet}}
                     </td>
                     {% set credit = lead.credits.last() %}
-                    <td>
-                        {{ credit.grantingDate|date("d-m-Y") }}
-                        {% if lead.credits|length > 1 %}
-                            <span>!!</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {{ credit.amount }}
-                    </td>
-                    <td>
-                        {{ credit.monthlyInstallment }}
-                    </td>
-                    <td>
-                        {{ credit.bankName }}
-                    </td>
-                    <td>
-                        {{lead.isActive}}
-                    </td>
+                    {% if credit %}
+                        <td>
+                            {{ credit.grantingDate|date("d-m-Y") }}
+                            {% if lead.credits|length > 1 %}
+                                <span>!!</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ credit.amount }}
+                        </td>
+                        <td>
+                            {{ credit.monthlyInstallment }}
+                        </td>
+                        <td>
+                            {{ credit.bankName }}
+                        </td>
+                        <td>
+                            {{lead.isActive}}
+                        </td>
+                    {% else %}
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    {% endif %}
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
