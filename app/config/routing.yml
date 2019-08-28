@@ -27,6 +27,12 @@ user_edit:
 user_new:
     path:     /uzytkownik/nowy
     defaults: { _controller: AppBundle:Security:new }
+    
+user_new_success:
+    path:     /uzytkownik/nowy/success/{id}
+    defaults: {_controller: AppBundle:Security:success }
+    requirements:
+        id: \d+
 
 homepage:
     path:     /

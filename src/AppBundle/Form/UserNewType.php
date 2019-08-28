@@ -14,10 +14,10 @@ class UserNewType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class, ['label' => 'Imię', 'attr' => ['class' => 'form-style']])
-            ->add('lastname', TextType::class, ['label' => 'Nazwisko', 'attr' => ['class' => 'form-style']])
-            ->add('pin', NumberType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-style'], 'constraints' => [new Length(['min' => 11, 'max' => 11])]])
-            ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'form-style']])
+            ->add('firstname', TextType::class, ['label' => 'Imię', 'attr' => ['class' => 'form-control']])
+            ->add('lastname', TextType::class, ['label' => 'Nazwisko', 'attr' => ['class' => 'form-control']])
+            ->add('pin', NumberType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-control'], 'constraints' => [new Length(['min' => 11, 'max' => 11])]])
+            ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'btn btn-danger btn-sm mt-3']])
             ;
     }
     

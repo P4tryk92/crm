@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="col-md-12">
+    <div class="table-responsive">
+        <table class="table table-striped" style="font-size:12px;">
+            <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Naziwsko</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+
+
+                            <td>
+                <p>Login:{{user.username}}</p>
+                            </td>
+                            <td>
+                <p>Hasło:(Ustawione w procesie rejestracji)</p>
+            </td>
+                <td><p>Imię użytkownika:{{user.firstname}}</p>
+                </td>
+                <td><p>Nazwisko użytkownika{{user.lastname}}</p></td>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
