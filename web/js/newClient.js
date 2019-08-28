@@ -32,7 +32,7 @@ function validate_lastName() {
 document.getElementById("lead_pin").addEventListener("change", validate_pin);
 
 function validate_pin() {
-    // console.log(this.value.length)
+    // console.log(this.value.length)   if (!this.value.match(/^\d\d-\d\d\d$/))
     if (this.value.length != 11 || this.value < 0) {
         this.className = "form-control is-invalid";
         document.getElementById(this.id + "_error").style.display = "block"
@@ -73,9 +73,19 @@ function validate_email() {
 
 
 
-// walidacja Daty urodzenia
+// walidacja Daty urodzenia  /^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/i
+document.getElementById("lead_birthDate").addEventListener("change", validate_birthDate);
 
-
+function validate_birthDate() {
+    if (!this.value.match(/^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/i)) {
+        this.className = "form-control is-invalid";
+        document.getElementById(this.id + "_error").style.display = "block"
+    }
+    else {
+        this.className = "form-control is-valid";
+        document.getElementById(this.id + "_error").style.display = "none"
+    }
+}
 
 
 // walidacja miejsca urodzenia
@@ -153,14 +163,6 @@ function validate_motherFamilySurname() {
         document.getElementById(this.id + "_error").style.display = "none";
     }
 }
-
-// walidacja stan cywilny
-
-
-
-// walidacja wykształcenia
-
-
 
 // walidacja adresu
 document.getElementById("lead_addressStreetAndNumber").addEventListener("change", validate_addressStreetAndNumber);
@@ -373,6 +375,11 @@ function validate_numberOfPeopleInTheHousehold() {
     }
 }
 
+// walidacja przychodu całego gospodarstwa domowego
+document.getElementById("lead_fixedSalaryNet").addEventListener("change", validate_estimatedTimeSalaryNet);
+
+
+
 // walidacja rodzaju umowy
 document.getElementById("lead_typeOfWorkContract").addEventListener("change", validate_typeOfWorkContract);
 
@@ -386,4 +393,52 @@ function validate_typeOfWorkContract() {
         document.getElementById(this.id + "_error").style.display = "none";
     }
 }
+
+// ukrywanie checkboxa odnośnie alimentów
+document.getElementById("lead_alimony").addEventListener("click", validate_alimony);
+
+function validate_alimony() {
+    if (this.checked == true) {
+        document.getElementById("alimonyform").style.display = ""
+    }
+    else {
+        document.getElementById("alimonyform").style.display = "none"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $( "form" )
+//   .change(function () {
+
+//     let checkformsclass=document.getElementsByTagName('is-invalid')
+//     for(let i=0;i<checkformsclass.length;i++){
+//         if(checkformsclass[i])
+//         {
+//             document.getElementById("lead_save").disabled=true
+//             console.log("unlocked")
+//         }
+//         else
+//         {
+//             document.getElementById("lead_save").disabled=false
+//             console.log("locked")
+//         }
+//     }
+//   })
+//   .change();
+
+// .document.querySelector('.is-invalid')addEventListener("change",abc)
+// function abc(){
+//     console.log('b')
+// }
 
