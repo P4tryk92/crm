@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <a href="{{ url('credit_new', {id: lead.id}) }}">Dodaj nowy kredyt</a>
-    <div>
-        Kredyty:
-    </div>
-    <br>
-
-    <table id="" class="">
+<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('credit_new', {id: lead.id}) }}">Dodaj nowy kredyt</a></button>
+<div>
+    Kredyty klienta
+</div>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped" style="font-size:12px;">
         <thead>
             <tr>
                 <th style="width:100px;">Liczba kredytów<br />({{ credits|length }})</th>
@@ -23,39 +22,50 @@
         </thead>
         <tbody>
             {% for credit in credits %}
-                <tr class="{{credit.id}}-row">
-                    <td>
-                        {{ loop.index + (page - 1 ) * perPage }}
-                    </td>
-                    <td>
-                        {{credit.amount}}
-                    </td>
-                    <td>
-                        {{credit.grantingDate|date("d-m-Y")}}
-                    </td>
-                    <td>
-                        {{credit.repaymentDate|date("d-m-Y")}}
-                    </td>
-                    <td>
-                        {{credit.monthlyInstallment}}
-                    </td>
-                    <td>
-                        {{credit.bankName}}
-                    </td>
-                    <td>
-                        {{credit.profitMargin}}
-                    </td>
-                    <td>
-                        <a href="{{ url('credit_edit', {leadId: lead.id, creditId: credit.id}) }}">Edytuj</a>
-                        <a href="{{ url('credit_remove', {leadId: lead.id, creditId: credit.id}) }}">Usuń</a>
-                    </td>
-                </tr>
+            <tr class="{{credit.id}}-row">
+                <th scope="row">
+                    {{ loop.index + (page - 1 ) * perPage }}
+                </th>
+                <td>
+                    {{credit.amount}}
+                </td>
+                <td>
+                    {{credit.grantingDate|date("d-m-Y")}}
+                </td>
+                <td>
+                    {{credit.repaymentDate|date("d-m-Y")}}
+                </td>
+                <td>
+                    {{credit.monthlyInstallment}}
+                </td>
+                <td>
+                    {{credit.bankName}}
+                </td>
+                <td>
+                    {{credit.profitMargin}}
+                </td>
+                <td>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
+                                href="{{ url('credit_edit', {leadId: lead.id, creditId: credit.id}) }}">Edytuj</a></button>
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item"
+                                href="{{ url('credit_remove', {leadId: lead.id, creditId: credit.id}) }}">Usuń</a>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
-
+</div>
 {% endblock %}
 
 {% block stylesheets %}
-    
+
 {% endblock %}
