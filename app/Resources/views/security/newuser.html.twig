@@ -1,33 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-<div class="col-md-12">
+<h2>Użytkownik stworzony!</h2>
+<div class="col-md-12 mt-5">
     <div class="table-responsive">
         <table class="table table-striped" style="font-size:12px;">
-            <thead>
-                <tr>
-                    <th>Imię</th>
-                    <th>Naziwsko</th>
-                </tr>
-            </thead>
+
             <tbody>
-                    <tr>
+                <tr>
 
 
-                            <td>
-                <p>Login:{{user.username}}</p>
-                            </td>
-                            <td>
-                <p>Hasło:(Ustawione w procesie rejestracji)</p>
-            </td>
-                <td><p>Imię użytkownika:{{user.firstname}}</p>
-                </td>
-                <td><p>Nazwisko użytkownika{{user.lastname}}</p></td>
+                    <td>
+                        <span class="font-weight-bold">Login:</span> {{user.username}}
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span class="font-weight-bold">Hasło:</span> 4 ostatnie cyfry peselu
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <span class="font-weight-bold">Imię użytkownika:</span> {{user.firstname}}
+                    </td>
+
+                </tr>
+                <tr>
+
+                    <td>
+                        <span class="font-weight-bold">Nazwisko użytkownika:</span> {{user.lastname}}
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
-
+    <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('user_index') }}">Wróć</a></button>
 </div>
 
 {% endblock %}
