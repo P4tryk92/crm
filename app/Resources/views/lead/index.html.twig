@@ -2,8 +2,11 @@
 
 {% block body %} 
 <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('lead_new') }}">Dodaj nowego klienta</a></button>
-    
-
+    <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+              })
+    </script>
     <div class="table-responsive">   
     <table class="table table-striped" style="font-size:12px;">
         <thead>
@@ -52,7 +55,9 @@
                         <td>
                             {{ credit.grantingDate|date("d-m-Y") }}
                             {% if lead.credits|length > 1 %}
-                                <span>!!</span>
+                            <span data-toggle="tooltip" data-placement="top" title="Klient posiada więcej kredytów">
+                                    <i class="fas fa-exclamation-circle h5 text-danger ml-2" ></i>
+                            </span>
                             {% endif %}
                         </td>
                         <td>
