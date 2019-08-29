@@ -41,7 +41,7 @@ class LeadType extends AbstractType
             ->add('addressCity', TextType::class, ['label' => 'Miejscowość', 'attr' => ['class' => 'form-control']])
             ->add('voivodeship', TextType::class, ['label' => 'Województwo', 'attr' => ['class' => 'form-control']])
             ->add('nationality', TextType::class, ['label' => 'Obywatelstwo', 'attr' => ['class' => 'form-control']])
-            ->add('correspondenceAddressStreetAndNumber', TextType::class, ['required' => false,'label' => 'Adres do Korespondencji (ulica i number budynku)', 'attr' => ['class' => 'form-control']])
+            ->add('correspondenceAddressStreetAndNumber', TextType::class, ['required' => false,'label' => 'Adres korespondencyjny (ulica i numer budynku)', 'attr' => ['class' => 'form-control']])
             ->add('correspondenceAddressPostCode', TextType::class, ['required' => false,'label' => 'Kod pocztowy do Korespondencji', 'attr' => ['class' => 'form-control']])
             ->add('correspondenceAddressCity', TextType::class, ['required' => false,'label' => 'Miejscowość do Korespondencji', 'attr' => ['class' => 'form-control']])
             ->add('correspondenceVoivodeship', TextType::class, ['required' => false,'label' => 'Województwo do Korespondencji', 'attr' => ['class' => 'form-control']])

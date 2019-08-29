@@ -19,7 +19,7 @@
                 {{ form_label(form.firstName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.firstName) }}
                 <span class="text-danger" id="lead_firstName_error" style="display:none;">Imię musi posiadać co najmniej
-                    3 litery.</span>
+                    2 litery.</span>
 
             </div>
 
@@ -94,7 +94,7 @@
                 {{ form_label(form.fatherFirstName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.fatherFirstName) }}
                 <span class="text-danger" id="lead_fatherFirstName_error" style="display:none;">Imię musi posiadać co
-                    najmniej 3 litery.</span>
+                    najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
@@ -102,7 +102,7 @@
                 {{ form_label(form.motherFirstName, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.motherFirstName) }}
                 <span class="text-danger" id="lead_motherFirstName_error" style="display:none;">Imię musi posiadać co
-                    najmniej 3 litery.</span>
+                    najmniej 2 litery.</span>
             </div>
 
             <div class="form-group">
@@ -162,10 +162,10 @@
                 {{ form_label(form.nationality, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.nationality) }}
                 <span class="text-danger" id="lead_nationality_error" style="display:none;">Obywatelstwo musi posiadać
-                    co najmniej 3 litery.</span>
+                    co najmniej 2 litery.</span>
             </div>
 
-            
+
         </div>
 
 
@@ -223,7 +223,9 @@
             <div class="form-group">
                 <!-- Przychód całego gospodarstwa domowego-->
                 {{ form_label(form.totalFamilyIncome, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.totalFamilyIncome) }}
+                {{ form_widget(form.totalFamilyIncome) }}<span class="text-danger" id="lead_totalFamilyIncome_error"
+                    style="display:none;">Wysokość
+                    wynagrodzenia nie może być liczbą ujemną.</span>
             </div>
 
             <div class="form-group">
@@ -231,7 +233,7 @@
                 {{ form_label(form.typeOfWorkContract, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.typeOfWorkContract) }}
                 <span class="text-danger" id="lead_typeOfWorkContract_error" style="display:none;">Rodzaj umowy musi
-                    mieć minimum 3 litery.</span>
+                    mieć minimum 2 litery.</span>
             </div>
 
             <div class="form-group">
@@ -270,46 +272,54 @@
                     {{ form_widget(form.alimonyAmount) }}
                 </div>
             </div>
+            <label id="adresscoresp_form_label" for="adresscoresp_form">Jeżeli adres korespondencyjny jest inny niż
+                zamieszkania</label>
+            <input type="checkbox" id="adresscoresp_form">
+            <div id="aderssCoresp" style="display:none;">
 
-            <div class="form-group">
-                <!-- Adres do Korespondencji (ulica i number budynku)-->
-                {{ form_label(form.correspondenceAddressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}})
-                }}
-                {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
-                <span class="text-danger" id="lead_correspondenceAddressStreetAndNumber_error"
-                    style="display:none;">Wpisz poprawny adres (przykład Prawnicza 30).</span>
+                <div class="form-group">
+                    <!-- Adres do Korespondencji (ulica i number budynku)-->
+                    {{ form_label(form.correspondenceAddressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}})
+                    }}
+                    {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
+                    <span class="text-danger" id="lead_correspondenceAddressStreetAndNumber_error"
+                        style="display:none;">Wpisz poprawny adres (przykład Prawnicza 30).</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Kod pocztowy do Korespondencji-->
+                    {{ form_label(form.correspondenceAddressPostCode, null, {'label_attr': {'class': 'control-label'}})
+                    }}
+                    {{ form_widget(form.correspondenceAddressPostCode) }}
+                    <span class="text-danger" id="lead_correspondenceAddressPostCode_error" style="display:none;">Kod
+                        pocztowy trzeba zapisac w formacie 01-123.</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Miejscowość do Korespondencji-->
+                    {{ form_label(form.correspondenceAddressCity, null, {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.correspondenceAddressCity) }}
+                    <span class="text-danger" id="lead_correspondenceAddressCity_error"
+                        style="display:none;">Miejscowość
+                        musi posiadać co najmniej 2 litery.</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Województwo do Korespondencji-->
+                    {{ form_label(form.correspondenceVoivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.correspondenceVoivodeship) }}
+                    <span class="text-danger" id="lead_correspondenceVoivodeship_error"
+                        style="display:none;">Województwo
+                        musi posiadać co najmniej 4 litery.</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Data od kiedy mieszka pod aktualnym adresem-->
+                    {{ form_label(form.dateFromLivesAtCurrentAddress, null, {'label_attr': {'class': 'control-label'}})
+                    }}
+                    {{ form_widget(form.dateFromLivesAtCurrentAddress) }}
+                </div>
             </div>
-
-            <div class="form-group">
-                <!-- Kod pocztowy do Korespondencji-->
-                {{ form_label(form.correspondenceAddressPostCode, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.correspondenceAddressPostCode) }}
-                <span class="text-danger" id="lead_correspondenceAddressPostCode_error" style="display:none;">Kod
-                    pocztowy trzeba zapisac w formacie 01-123.</span>
-            </div>
-
-            <div class="form-group">
-                <!-- Miejscowość do Korespondencji-->
-                {{ form_label(form.correspondenceAddressCity, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.correspondenceAddressCity) }}
-                <span class="text-danger" id="lead_correspondenceAddressCity_error" style="display:none;">Miejscowość
-                    musi posiadać co najmniej 2 litery.</span>
-            </div>
-
-            <div class="form-group">
-                <!-- Województwo do Korespondencji-->
-                {{ form_label(form.correspondenceVoivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.correspondenceVoivodeship) }}
-                <span class="text-danger" id="lead_correspondenceVoivodeship_error" style="display:none;">Województwo
-                    musi posiadać co najmniej 4 litery.</span>
-            </div>
-
-            <div class="form-group">
-                <!-- Data od kiedy mieszka pod aktualnym adresem-->
-                {{ form_label(form.dateFromLivesAtCurrentAddress, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.dateFromLivesAtCurrentAddress) }}
-            </div>
-
 
             <div class="form-group">
                 <!-- Aktywny?-->
@@ -336,7 +346,7 @@
     {% endblock %}
 
     {% block stylesheets %}
-    <link href="{{ asset( '../css/addClient.css' ) }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset( '../css/newClient.css' ) }}" rel="stylesheet" type="text/css" />
 
     {% endblock %}
 
