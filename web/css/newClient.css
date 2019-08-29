@@ -1,0 +1,25 @@
+.custom-width{
+    width: 23px;
+    height: 23px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+#lead_isActive:hover{
+    color: black;
+    background-color: white;
+}
+
+#lead_save{
+    background-color: #dc3545;
+}
+
+#adresscoresp_form{
+    width: 23px;
+    height: 23px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#adresscoresp_form_label{
+    margin-bottom: 2rem;
+}
