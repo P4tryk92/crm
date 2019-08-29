@@ -90,12 +90,20 @@ class SecurityController extends Controller
 
             $em->persist($user);
             $em->flush();
-
-            return $this->redirectToRoute('homepage'); 
+            $userId = $this->getUser()->getId();
+            return $this->redirectToRoute('user_new_success', ['id' => $user->getId()]);
         }
 
         return $this->render('security/edit.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+    public function successAction($id,Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('AppBundle:User')->findOneById($id);
+        return $this->render('security/newuser.html.twig', [
+            'user' => $users,
         ]);
     }
 }

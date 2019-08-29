@@ -18,21 +18,21 @@ class UserEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class, ['label' => 'Imię', 'attr' => ['class' => 'form-style']])
-            ->add('lastname', TextType::class, ['label' => 'Nazwisko', 'attr' => ['class' => 'form-style']])
-            ->add('email', EmailType::class, ['label' => 'Email', 'required' => false, 'attr' => ['class' => 'form-style']])
-            ->add('pin', NumberType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-style'], 'constraints' => [new Length(['min' => 11, 'max' => 11])]])
-            ->add('oldPassword', PasswordType::class, ['label' => 'Stare hasło', 'mapped' => false, 'attr' => ['class' => 'form-style']])
-            ->add('password', PasswordType::class, ['label' => 'Nowe hasło', 'mapped' => false, 'attr' => ['class' => 'form-style']])
+            ->add('firstname', TextType::class, ['label' => 'Imię', 'attr' => ['class' => 'form-control']])
+            ->add('lastname', TextType::class, ['label' => 'Nazwisko', 'attr' => ['class' => 'form-control']])
+            ->add('email', EmailType::class, ['label' => 'Email', 'required' => false, 'attr' => ['class' => 'form-control']])
+            ->add('pin', NumberType::class, ['label' => 'Pesel', 'attr' => ['class' => 'form-control'], 'constraints' => [new Length(['min' => 11, 'max' => 11])]])
+            ->add('oldPassword', PasswordType::class, ['label' => 'Stare hasło', 'mapped' => false, 'attr' => ['class' => 'form-control']])
+            ->add('password', PasswordType::class, ['label' => 'Nowe hasło', 'mapped' => false, 'attr' => ['class' => 'form-control']])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'first_options'  => ['label' => 'Nowe hasło'],
                 'second_options' => ['label' => 'Powtórz hasło'],
                 'invalid_message' => 'Podane hasła się różnią',
-                'options' => ['attr' => ['class' => 'form-style']]])
-            ->add('isActive', CheckboxType::class, ['label'    => 'Aktywny?', 'required' => false, 'attr' => ['class' => 'form-style']])
-            ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'form-style']])
+                'options' => ['attr' => ['class' => 'form-control']]])
+            ->add('isActive', CheckboxType::class, ['label'    => 'Aktywny?', 'required' => false, 'attr' => ['class' => 'form-check-input ml-2']])
+            ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'form-control']])
             ;
     }
     

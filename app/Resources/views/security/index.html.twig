@@ -3,18 +3,49 @@
 {% block body %}
 
 <div>
-    {% for user in users %}
-        {{ user.firstname }} {{ user.lastname }} 
-        <a href="{{ url('user_edit', {'id': user.id}) }}">Edytuj</a>
-    {% endfor %}
-    <br>
-    <a href="{{ url('user_new') }}">Dodaj nowego użytkownika</a>
+    <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('user_new') }}">Dodaj
+            nowego użytkownika</a></button>
+
 </div>
-    
+<div class="table-responsive">
+    <table class="table table-striped" style="font-size:12px;">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Naziwsko</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+
+
+                <td>
+                    {{ user.firstname }}
+                </td>
+                <td>
+                    {{ user.lastname }}
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-sm float-right"><a class="text-white"
+                                href="{{ url('user_edit', {'id': user.id}) }}">Edytuj</a></button>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
 {% endblock %}
 
 {% block stylesheets %}
 
 {% endblock %}
-
-
