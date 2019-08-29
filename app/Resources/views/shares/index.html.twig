@@ -2,13 +2,14 @@
 
 {% block body %}
 
-    <a href="{{ url('shares_new', {id: lead.id}) }}">Dodaj nowe akcje</a>
-    <div>
-        Akcje:
-    </div>
-    <br>
+<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('shares_new', {id: lead.id}) }}">Dodaj nowy kredyt</a></button>
 
-    <table id="" class="">
+<div>
+    Akcje:
+</div>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped" style="font-size:12px;">
         <thead>
             <tr>
                 <th style="width:100px;">Liczba<br />({{ shares|length }})</th>
@@ -20,30 +21,39 @@
         </thead>
         <tbody>
             {% for share in shares %}
-                <tr class="{{share.id}}-row">
-                    <td>
-                        {{ loop.index + (page - 1 ) * perPage }}
-                    </td>
-                    <td>
-                        {{share.nameAndType}}
-                    </td>
-                    <td>
-                        {{share.numberOfSharesHeld}}
-                    </td>
-                    <td>
-                        {{share.value}}
-                    </td>
-                    <td>
-                        <a href="{{ url('shares_edit', {leadId: lead.id, sharesId: share.id}) }}">Edytuj</a>
-                        <a href="{{ url('shares_remove', {leadId: lead.id, sharesId: share.id}) }}">Usuń</a>
-                    </td>
-                </tr>
+            <tr class="{{share.id}}-row">
+                <th scope="row">
+                    {{ loop.index + (page - 1 ) * perPage }}
+                </th>
+                <td>
+                    {{share.nameAndType}}
+                </td>
+                <td>
+                    {{share.numberOfSharesHeld}}
+                </td>
+                <td>
+                    {{share.value}}
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
+                                href="{{ url('shares_edit', {leadId: lead.id, sharesId: share.id}) }}">Edytuj</a></button>
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item"
+                                href="{{ url('shares_remove', {leadId: lead.id, sharesId: share.id}) }}">Usuń</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
 
-{% endblock %}
+    {% endblock %}
 
-{% block stylesheets %}
-    
-{% endblock %}
+    {% block stylesheets %}
+
+    {% endblock %}
