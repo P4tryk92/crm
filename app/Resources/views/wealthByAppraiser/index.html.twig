@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white"
+        href="{{ url('wealth_by_appraiser_new', {id: lead.id}) }}">Dodaj majątek</a></button>
 
-    <a href="{{ url('wealth_by_appraiser_new', {id: lead.id}) }}">Dodaj nowy majątek wyceniony przez rzeczoznawcę</a>
-    <div>
-        Majątek wyceniony przez rzeczoznawcę:
-    </div>
-    <br>
+<div>
+    Majątek wyceniony przez rzeczoznawcę:
+</div>
+<br>
 
-    <table id="" class="">
+<div class="table-responsive">
+    <table class="table table-striped" style="font-size:12px;">
         <thead>
             <tr>
                 <th style="width:100px;">Liczba<br />({{ wealthsByAppraiser|length }})</th>
@@ -19,27 +21,36 @@
         </thead>
         <tbody>
             {% for wealth in wealthsByAppraiser %}
-                <tr class="{{wealth.id}}-row">
-                    <td>
-                        {{ loop.index + (page - 1 ) * perPage }}
-                    </td>
-                    <td>
-                        {{wealth.type}}
-                    </td>
-                    <td>
-                        {{wealth.estimatedValuation}}
-                    </td>
-                    <td>
-                        <a href="{{ url('wealth_by_appraiser_edit', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Edytuj</a>
-                        <a href="{{ url('wealth_by_appraiser_remove', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Usuń</a>
-                    </td>
-                </tr>
+            <tr class="{{wealth.id}}-row">
+                <th scope="row">
+                    {{ loop.index + (page - 1 ) * perPage }}
+                </th>
+                <td>
+                    {{wealth.type}}
+                </td>
+                <td>
+                    {{wealth.estimatedValuation}}
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
+                                href="{{ url('wealth_by_appraiser_edit', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Edytuj</a></button>
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item"
+                                href="{{ url('wealth_by_appraiser_remove', {leadId: lead.id, wealthByAppraiserId: wealth.id}) }}">Usuń</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
 
-{% endblock %}
+    {% endblock %}
 
-{% block stylesheets %}
-    
-{% endblock %}
+    {% block stylesheets %}
+
+    {% endblock %}
