@@ -15,10 +15,10 @@ class CreditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amount', IntegerType::class, ['label' => 'Kwota', 'attr' => ['class' => 'form-control','step' => '0.01']])
+            ->add('amount', NumberType::class, ['label' => 'Kwota', 'attr' => ['class' => 'form-control','step' => '0.01']])
             ->add('grantingDate', DateType::class, ['widget' => 'single_text', 'label' => 'Data udzielenia kredytu', 'attr' => ['class' => 'form-control']])
             ->add('repaymentDate', DateType::class, ['widget' => 'single_text', 'label' => 'Data spłaty kredytu', 'attr' => ['class' => 'form-control']])
-            ->add('monthlyInstallment', IntegerType::class, ['label' => 'Miesięczna rata', 'attr' => ['class' => 'form-control','step' => '0.01']])
+            ->add('monthlyInstallment', NumberType::class, ['label' => 'Miesięczna rata', 'attr' => ['class' => 'form-control','step' => '0.01']])
             ->add('bankName', TextType::class, ['label' => 'Nazwa banku', 'attr' => ['class' => 'form-control']])
             ->add('profitMargin', NumberType::class, ['label' => 'Wysokość marży kredytu', 'attr' => ['class' => 'form-control','step' => '0.01']])
             ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'btn btn-danger btn-sm']])

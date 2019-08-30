@@ -14,7 +14,7 @@ class WealthByAppraiserType extends AbstractType
     {
         $builder
             ->add('type', TextType::class, ['label' => 'Rodzaj majątku', 'attr' => ['class' => 'form-control']])
-            ->add('estimatedValuation', NumberType::class, ['label' => 'Szacowana wartość', 'attr' => ['class' => 'form-control']])
+            ->add('estimatedValuation', NumberType::class, ['label' => 'Szacowana wartość', 'attr' => ['class' => 'form-control','step' => '0.01']])
             ->add('save', SubmitType::class, ['label' => 'Zapisz', 'attr' => ['class' => 'btn btn-danger btn-sm']])
             ;
     }
