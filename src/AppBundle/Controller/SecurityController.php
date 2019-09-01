@@ -94,7 +94,7 @@ class SecurityController extends Controller
             return $this->redirectToRoute('user_new_success', ['id' => $user->getId()]);
         }
 
-        return $this->render('security/edit.html.twig', [
+        return $this->render('security/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
