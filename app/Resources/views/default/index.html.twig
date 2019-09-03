@@ -1,31 +1,58 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<link href="{{ asset( '../css/dashboard.css' ) }}" rel="stylesheet" type="text/css" />
-    <div class="container">
-            <div class="row mx-md-n5 text-center">
-                    <div class="col px-md-5"><div class="p-3 border bg-light">
+
+
+<div class="row">
+    <div class="card col-md-5 p-0 m-3 animated zoomIn" data-wow-delay="0.3s" data-stateful="true" data-inner-id="lobicard-parent-default">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Aktywni klienci</h4>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="media">
+
+                <div class="media-body">
+                    <div class="p-3 border bg-light text-center">
                         <span>Aktywni klienci </span><br><span class="text-info display-4" id="active-leads"></span>
 
-                    </div></div>
-                    <div class="col px-md-5"><div class="p-3 border bg-light">
-                            <span>Wszyscy klienci </span><br><span class="text-info display-4" id="all-leads"></span>
-                    </div></div>
-                  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="card col-md-5 p-0 m-3 animated zoomIn" data-stateful="true" data-inner-id="lobicard-parent-default">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Wszyscy klienci</h4>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="media">
+
+                <div class="media-body">
+                    <div class="p-3 border bg-light text-center">
+                        <span>Wszyscy klienci </span><br><span class="text-info display-4" id="all-leads"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block stylesheets %}
-    
+<link href="{{ asset( '../css/dashboard.css' ) }}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block javascripts %}
 
-    {# <div id="curve_chart" style="width: 900px; height: 500px"></div> #}
+{# <div id="curve_chart" style="width: 900px; height: 500px"></div> #}
 
 <script>
-    var allLeadsLength = {{ allLeads|length }};
-    var activeLeadsLength = {{ activeLeads|length }};
+    var allLeadsLength = {{ allLeads| length }};
+    var activeLeadsLength = {{ activeLeads| length }};
 </script>
 <script src="{{ asset('../js/dashboard.js') }}"></script>
 {% endblock %}
