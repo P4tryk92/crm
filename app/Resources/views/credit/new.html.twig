@@ -15,7 +15,8 @@
             <div class="form-group">
                 <!-- Kwota kredytu -->
                 {{ form_label(form.amount, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.amount) }}
+
+                 {{ form_widget(form.amount, { 'type':'number' }) }
                 <span class="text-danger" id="credit_amount_error" style="display:none;">Kwota kredytu musi być większa od 0.</span>
             </div>
             <div class="form-group">
@@ -36,8 +37,9 @@
             <div class="form-group">
                 <!-- Miesięczna rata -->
                 {{ form_label(form.monthlyInstallment, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.monthlyInstallment) }}
+                {{ form_widget(form.monthlyInstallment, { 'type':'number' }) }}
                 <span class="text-danger" id="credit_monthlyInstallment_error" style="display:none;">Miesięczna rata musi być większa od 0.</span>
+
             </div>
             <div class="form-group">
                 <!-- Nazwa banku -->
@@ -48,7 +50,8 @@
             <div class="form-group">
                 <!-- Wysokość marży kredytu -->
                 {{ form_label(form.profitMargin, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.profitMargin) }}
+
+                {{ form_widget(form.profitMargin, { 'type':'number' }) }}
                 <span class="text-danger" id="credit_profitMargin_error" style="display:none;">Wysokość marży nie może być liczbą ujemną.</span>
             </div>
             <div class="form-group">

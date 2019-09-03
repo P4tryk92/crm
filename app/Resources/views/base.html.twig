@@ -27,55 +27,82 @@
 
   <script src="https://kit.fontawesome.com/204a798f93.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <link rel="stylesheet" href="{{ asset( '../lobicard/dist/css/lobicard.min.css' ) }}" />
+  <link rel="stylesheet" href="{{ asset( '../css/animate.css' ) }}" />
+  <script src="{{ asset( '../lobicard/lib/jquery/dist/jquery.min.js' ) }}"></script>
+  <script src="{{ asset( '../lobicard/lib/jquery-ui/jquery-ui.min.js' ) }}"></script>
+  <script src="{{ asset( '../lobicard/dist/js/lobicard.js' ) }}"></script>
+  <script src="{{ asset( '../lobicard/lib/highlight.js/lib/highlight.js' ) }}"></script>
+  <script>
 
+    $(function () {
+
+      $('#lobicard-multiple')
+        .find('.card')
+        .lobiCard({
+          sortable: true,
+          beforeTitleChange: function (lobiCard, title) {
+            console.log("beforeTitleChange", arguments);
+            if (!title) {
+              return false;
+            }
+          }
+        });
+    });
+
+  </script>
 </head>
 
 <body>
   {% block header %}
 
-    <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap p-0 shadow" style="position: relative;">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0 ml-3" href="{{ url('homepage') }}"><img class="img-responsive" style="width:40px;" src="/img/crm.png"></a>
-      <span class="text-white">Witaj {{ app.user.firstName }}</span>
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
+  <nav class="navbar navbar-dark fixed-top bg-danger flex-md-nowrap p-0 shadow" style="position: relative;">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0 ml-3" href="{{ url('homepage') }}"><img class="img-responsive"
+        style="width:40px;" src="/img/crm.png"></a>
+    <span class="text-white">Witaj {{ app.user.firstName }}</span>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
 
-          <a class="nav-link" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-        </li>
-
-
-
-      </ul>
+        <a class="nav-link" href="{{ url('logout') }}"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+      </li>
 
 
-    </nav>
 
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-md-block bg-light sidebar h-100 d-inline-block">
-          <div class="sidebar-sticky mt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" href="{{ url('homepage') }}">
-                    <i class="fas fa-home h3"></i>
-                  <span class="ml-2">Dashboard</span> 
-                </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="{{ url('lead_index') }}">
-                      <i class="fas fa-users h3"></i>
-                    <span class="ml-2">Klienci</span> 
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="{{ url('user_index') }}">
-                      <i class="fas fa-user-tie h3"></i>
-                    <span class="ml-3">Użytkownicy</span> 
-                  </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div class="col-md-10 mt-3">
+    </ul>
+
+
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-md-block bg-light sidebar h-100 d-inline-block">
+        <div class="sidebar-sticky mt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url('homepage') }}">
+                <i class="fas fa-home h3"></i>
+                <span class="ml-2">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url('lead_index') }}">
+                <i class="fas fa-users h3"></i>
+                <span class="ml-2">Klienci</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url('user_index') }}">
+                <i class="fas fa-user-tie h3"></i>
+                <span class="ml-3">Użytkownicy</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="col-md-10 mt-3">
+        <div id="lobicard-multiple">
+
+    
 
           {% endblock %}
 
@@ -83,11 +110,15 @@
 
           {% block footer %}{% endblock %}
 
-          {% block javascripts %}{% endblock %}
+          {% block javascripts %}
+
+
+
+
+          {% endblock %}
           </main>
         </div>
       </div>
-    </div>
-  </body>
+</body>
 
 </html>

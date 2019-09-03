@@ -32,7 +32,7 @@
             <div class="form-group">
                 <!-- Wartość -->
                 {{ form_label(form.value, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.value) }}
+                {{ form_widget(form.value, { 'type':'number' }) }}
                 <span class="text-danger" id="shares_value_error" style="display:none;">Wartość akcji nie może
                     być liczbą ujemną.</span>
             </div>

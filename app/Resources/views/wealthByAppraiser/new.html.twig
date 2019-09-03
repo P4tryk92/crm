@@ -21,7 +21,7 @@
             <div class="form-group">
                 <!-- Szacowana wartość -->
                 {{ form_label(form.estimatedValuation, null, {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_widget(form.estimatedValuation) }}
+                {{ form_widget(form.estimatedValuation, { 'type':'number' }) }}
             </div>
             <div class="form-group">
                 <!-- Submit Button -->
