@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="col-md-4">
+
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            <!-- Imię -->
+            {{ form_label(form.firstname, null, {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.firstname) }}
+            <span class="text-danger" id="user_new_firstname_error" style="display:none;">Imię musi posiadać co najmniej
+                2 litery.</span>
+        </div>
+        <div class="form-group">
+            <!-- Nazwisko -->
+            {{ form_label(form.lastname, null, {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.lastname) }}
+            <span class="text-danger" id="user_new_lastname_error" style="display:none;">Imię musi posiadać co najmniej
+                2 litery.</span>
+        </div>
+        <div class="form-group">
+            <!-- Pesel -->
+            {{ form_label(form.pin, null, {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.pin) }}
+            <span class="text-danger" id="user_new_pin_error" style="display:none;">Pesel musi posiadać dokładnie 11
+                liczb dodatnich.</span>
+        </div>
+        <div class="form-group">
+            <!-- button -->
+            {{ form_label(form.save, null, {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+<script src="{{ asset('../js/global.js') }}"></script>
+<script src="{{ asset('../js/newUser.js') }}"></script>
+
+
+{% endblock %}
