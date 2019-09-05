@@ -2,11 +2,8 @@
 
 {% block body %} 
 <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('lead_new') }}">Dodaj nowego klienta</a></button>
-    <script>
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-              })
-    </script>
+
+    
     <div class="table-responsive">   
     <table class="table table-striped" style="font-size:12px;">
         <thead>
@@ -70,7 +67,11 @@
                             {{ credit.bankName }}
                         </td>
                         <td>
-                            {{lead.isActive}}
+                            {% if lead.isActive==1 %}
+                            Aktywny
+                            {% else %}
+                            Nie aktywny
+                            {% endif %} 
                         </td>
                     {% else %}
                         <td>-</td>
@@ -99,10 +100,29 @@
             {% endfor %}
         </tbody>
     </table>
+    <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do csv</button>
 </div>
          
 {% endblock %}
 
 {% block stylesheets %}
     
+{% endblock %}
+
+{% block javascripts %}
+<script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
+         
+          var data = [
+          ['id','imie','nazwisko','pesel','nrtel','zarobki','kredyt od','wysokosc kredytu','wysokosc raty kredytu','bank','status'],
+          {% for lead in leads %}
+          {% set credit = lead.credits.last() %}
+            ['{{lead.id}}', '{{lead.firstName}}', '{{lead.lastName}}','{{lead.pin}}','{{lead.phoneNumber}}','{{lead.fixedSalaryNet}}',{% if credit %},'{{ credit.amount }}','{{ credit.monthlyInstallment }}','{{ credit.bankName }}',{% else %},'','','',{% endif %}'{{lead.isActive}}'],
+            
+        {% endfor %}
+        ];
+
+</script>
 {% endblock %}
