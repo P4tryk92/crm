@@ -51,9 +51,22 @@
             {% endfor %}
         </tbody>
     </table>
+    <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do csv</button>
+</div>
+{% endblock %}
 
-    {% endblock %}
+{% block stylesheets %}
 
-    {% block stylesheets %}
+{% endblock %}
+{% block javascripts %}
+<script>
+          var data = [
+          ['nazwa','ilosc','wartosc'],
+          {% for share in shares %}
+            ['{{share.nameAndType}}','{{share.numberOfSharesHeld}}','{{share.value}}'],
+            
+        {% endfor %}
+        ];
 
-    {% endblock %}
+</script>
+{% endblock %}

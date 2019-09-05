@@ -63,9 +63,26 @@
             {% endfor %}
         </tbody>
     </table>
+    <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do csv</button>
 </div>
 {% endblock %}
 
 {% block stylesheets %}
 
+{% endblock %}
+{% block javascripts %}
+<script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
+         
+          var data = [
+          ['kwota','data udzielenia kredytu','data splaty kredytu','wysykosc miesiecznej raty','nazwa banku','marza w %'],
+          {% for credit in credits %}
+            ['{{credit.amount}}','{{credit.grantingDate|date("d-m-Y")}}','{{credit.repaymentDate|date("d-m-Y")}}','{{credit.monthlyInstallment}}','{{credit.bankName}}','{{credit.profitMargin}}'],
+            
+        {% endfor %}
+        ];
+
+</script>
 {% endblock %}
