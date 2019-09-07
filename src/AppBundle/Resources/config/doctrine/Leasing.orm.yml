@@ -1,12 +1,16 @@
-AppBundle\Entity\Credit:
+AppBundle\Entity\Leasing:
   type: entity
-  repositoryClass: AppBundle\Repository\CreditRepository
-  table: credit
+  repositoryClass: AppBundle\Repository\LeasingRepository
+  table: leasing
   id:
     id:
       type: integer
       generator: { strategy: AUTO }
   fields:
+    leasingThing:
+      type: string
+      length: 128
+      nullable: true
     amount:
       type: float
       nullable: true
@@ -23,19 +27,10 @@ AppBundle\Entity\Credit:
       type: string
       length: 64
       nullable: true
-    profitMargin:
-      type: float
-      nullable: true
   manyToOne: 
-    lead:
-      targetEntity: Lead
-      inversedBy: credits
-      joinColumn:
-        name: lead_id
-        referencedColumnName: id
     company:
       targetEntity: Company
-      inversedBy: credits
+      inversedBy: leasing
       joinColumn:
         name: company_id
         referencedColumnName: id

@@ -61,30 +61,60 @@ lead_remove:
         id: \d+
 
 credit_index:
-    path:     /klient/{id}/kredyty/{page}
+    path:     /{type}/{id}/kredyty/{page}
     defaults: { _controller: AppBundle:Credit:index, page: 1  }
     requirements:
         page: \d+
+        type: klient|firma
 
 credit_new:
-    path:     /klient/{id}/kredyt-nowy
+    path:     /{type}/{id}/kredyt-nowy
     defaults: { _controller: AppBundle:Credit:new }
     requirements:
         id: \d+
+        type: klient|firma
 
 credit_edit:
-    path:     /klient/{leadId}/kredyt-edytuj/{creditId}
+    path:     /{type}/{id}/kredyt-edytuj/{creditId}
     defaults: { _controller: AppBundle:Credit:edit }
     requirements:
-        leadId: \d+
+        id: \d+
         creditId: \d+
+        type: klient|firma
 
 credit_remove:
-    path:     /klient/{leadId}/kredyt-usun/{creditId}
+    path:     /{type}/{id}/kredyt-usun/{creditId}
     defaults: { _controller: AppBundle:Credit:remove }
     requirements:
-        leadId: \d+
+        id: \d+
         creditId: \d+
+        type: klient|firma
+
+leasing_index:
+    path:     /fimra/{id}/leasing/{page}
+    defaults: { _controller: AppBundle:Leasing:index, page: 1  }
+    requirements:
+        page: \d+
+
+leasing_new:
+    path:     /firma/{id}/leasing-nowy
+    defaults: { _controller: AppBundle:Leasing:new }
+    requirements:
+        id: \d+
+
+leasing_edit:
+    path:     /firma/{id}/leasing-edytuj/{leasingId}
+    defaults: { _controller: AppBundle:Leasing:edit }
+    requirements:
+        id: \d+
+        leasingId: \d+
+
+leasing_remove:
+    path:     /firma/{id}/leasing-usun/{leasingId}
+    defaults: { _controller: AppBundle:Leasing:remove }
+    requirements:
+        id: \d+
+        leasingId: \d+
 
 wealth_by_appraiser_index:
     path:     /klient/{id}/majatek-rzeczoznawca/{page}
@@ -163,3 +193,25 @@ shares_remove:
     requirements:
         leadId: \d+
         sharesId: \d+
+
+company_index:
+    path:     /firmy/{page}
+    defaults: { _controller: AppBundle:Company:index, page: 1 }
+    requirements:
+        page: \d+
+
+company_new:
+    path:     /firma/nowy
+    defaults: { _controller: AppBundle:Company:new }
+
+company_edit:
+    path:     /firma/{id}/edytuj
+    defaults: { _controller: AppBundle:Company:edit }
+    requirements:
+        id: \d+
+
+company_remove:
+    path:     /firma/{id}/usun
+    defaults: { _controller: AppBundle:Company:remove }
+    requirements:
+        id: \d+

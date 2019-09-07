@@ -1,0 +1,139 @@
+AppBundle\Entity\Company:
+  type: entity
+  repositoryClass: AppBundle\Repository\CompanyRepository
+  table: company
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    companyName:
+      type: string
+      length: 64
+      nullable: true
+    type:
+      type: string
+      length: 64
+      nullable: true
+    industry:
+      type: string
+      length: 128
+      nullable: true
+    nip:
+      type: string
+      length: 25
+      nullable: true
+      unique: true
+    regon:
+      type: string
+      length: 25
+      nullable: true
+      unique: true
+    phoneNumber:
+      type: integer
+      nullable: true
+    email:
+      type: string
+      length: 64
+      # unique: true
+      nullable: true
+    fax:
+      type: string
+      length: 64
+      # unique: true
+      nullable: true
+    isActive:
+      type: boolean
+    note:
+      type: string
+      length: 512
+      nullable: true
+    companyStartDate:
+      type: datetime
+      nullable: true
+    site:
+      type: string
+      length: 64
+      nullable: true
+    addressStreetAndNumber:
+      type: string
+      length: 25
+      nullable: true
+    addressPostCode:
+      type: string
+      length: 25
+      nullable: true
+    addressCity:
+      type: string
+      length: 25
+      nullable: true
+    voivodeship:
+      type: string
+      length: 25
+      nullable: true
+    nationality:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceAddressStreetAndNumber:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceAddressPostCode:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceAddressCity:
+      type: string
+      length: 25
+      nullable: true
+    correspondenceVoivodeship:
+      type: string
+      length: 25
+      nullable: true
+    numberOfEmployees:
+      type: float
+      nullable: true
+    monthlyCosts:
+      type: float
+      nullable: true
+    estimatedMonthlyCosts:
+      type: float
+      nullable: true
+    fixedAnnualIncome:
+      type: float
+      nullable: true
+    stockQuotes:
+      type: float
+      nullable: true
+    planingInvestments:
+      type: string
+      length: 512
+      nullable: true
+    created_at:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: create
+    updated_at:
+        type: datetime
+        gedmo:
+          timestampable:
+            on: update
+  oneToMany:
+    credits:
+      targetEntity: Credit
+      mappedBy: company
+      cascade: ["persist"]
+    leasing:
+      targetEntity: Leasing
+      mappedBy: company
+      cascade: ["persist"]
+    wealthByAppraiser:
+      targetEntity: WealthByAppraiser
+      mappedBy: company
+      cascade: ["persist"]
+    shares:
+      targetEntity: Shares
+      mappedBy: company
+      cascade: ["persist"]
