@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('credit_new', {type: type, id: lead.id}) }}">Dodaj nowy kredyt</a></button>
+<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('leasing_new', {id: company.id}) }}">Dodaj nowy leasing</a></button>
 <div>
-    Kredyty
+    Leasing
 </div>
 <br>
 <div class="table-responsive">
     <table class="table table-striped" style="font-size:12px;">
         <thead>
             <tr>
-                <th style="width:100px;">Liczba kredytów<br />({{ paginator|length }})</th>
+                <th style="width:100px;">Liczba leasingów<br />({{ paginator|length }})</th>
                 <th style="width:100px;">Kwota</th>
                 <th style="width:150px;">Data udzielenia kredytu</th>
                 <th style="width:150px;">Data spłaty kredytu</th>
@@ -21,40 +21,39 @@
             </tr>
         </thead>
         <tbody>
-            {% for credit in paginator %}
-            <tr class="{{credit.id}}-row">
+            {% for leasing in paginator %}
+            <tr class="{{leasing.id}}-row">
                 <th scope="row">
                     {{ loop.index + (page - 1 ) * perPage }}
                 </th>
                 <td>
-                    {{credit.amount}}
+                    {{leasing.amount}}
                 </td>
                 <td>
-                    {{credit.grantingDate|date("d-m-Y")}}
+                    {{leasing.grantingDate|date("d-m-Y")}}
                 </td>
                 <td>
-                    {{credit.repaymentDate|date("d-m-Y")}}
+                    {{leasing.repaymentDate|date("d-m-Y")}}
                 </td>
                 <td>
-                    {{credit.monthlyInstallment}}
+                    {{leasing.monthlyInstallment}}
                 </td>
                 <td>
-                    {{credit.bankName}}
+                    {{leasing.bankName}}
                 </td>
                 <td>
-                    {{credit.profitMargin}}
+                    {{leasing.profitMargin}}
                 </td>
                 <td>
-
                     <div class="btn-group">
                         <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
-                                href="{{ url('credit_edit', {type: type, id: lead.id, creditId: credit.id}) }}">Edytuj</a></button>
+                                href="{{ url('leasing_edit', {type: type, id: company.id, leasingId: leasing.id}) }}">Edytuj</a></button>
                         <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item"
-                                href="{{ url('credit_remove', {type: type, id: lead.id, creditId: credit.id}) }}">Usuń</a>
+                                href="{{ url('leasing_remove', {type: type, id: company.id, leasingId: leasing.id}) }}">Usuń</a>
                         </div>
                     </div>
 

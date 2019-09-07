@@ -1,0 +1,260 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% if edit is defined %}
+<h3>Edycja firmy "{{lead.firstName}} {{lead.lastName}}"</h3>
+{% else %}
+<h3>Dodawanie nowej firmy </h3>
+{% endif %}
+
+
+<div class="container">
+
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <!-- Nazwa firmy -->
+                {{ form_label(form.companyName, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.companyName) }}
+                <span class="text-danger" id="" style="display:none;">Firma musi posiadać co najmniej
+                    2 litery.</span>
+
+            </div>
+
+            <div class="form-group">
+                <!-- Typ -->
+                {{ form_label(form.type, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.type) }}
+                <span class="text-danger" id="" style="display:none;">Typ musi posiadać co
+                    najmniej 2 litery.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Branza -->
+                {{ form_label(form.industry, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.industry) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- NIP -->
+                {{ form_label(form.nip, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.nip) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Regon -->
+                {{ form_label(form.regon, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.regon) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Numer telefonu-->
+                {{ form_label(form.phoneNumber, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.phoneNumber) }}
+                <span class="text-danger" id="lead_phoneNumber_error" style="display:none;">Numer telefonu musi posiadać
+                    dokładnie 9 liczb dodatnich.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Email-->
+                {{ form_label(form.email, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.email) }}
+                <span class="text-danger" id="lead_email_error" style="display:none;">Wpisz poprawny email (przykład
+                    agata@interia.pl).</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Fax -->
+                {{ form_label(form.fax, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.fax) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Data powstania firmy -->
+                {{ form_label(form.companyStartDate, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.companyStartDate) }}
+                <span class="text-danger" id="" style="display:none;">Wpisz poprawną datę
+                    (25.12.2000)</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Strona internetowa firmy -->
+                {{ form_label(form.site, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.site) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Adres zamieszkania (ulica i numer budynku) -->
+                {{ form_label(form.addressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.addressStreetAndNumber) }}
+                <span class="text-danger" id="lead_addressStreetAndNumber_error" style="display:none;">Wpisz poprawny
+                    adres (przykład os.kalinowe 19/50).</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Kod pocztowy -->
+                {{ form_label(form.addressPostCode, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.addressPostCode) }}
+                <span class="text-danger" id="lead_addressPostCode_error" style="display:none;">Kod pocztowy trzeba
+                    zapisac w formacie 01-123.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Miejscowość -->
+                {{ form_label(form.addressCity, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.addressCity) }}
+                <span class="text-danger" id="lead_addressCity_error" style="display:none;">Miejscowość musi posiadać co
+                    najmniej 2 litery.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Województwo-->
+                {{ form_label(form.voivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.voivodeship) }}
+                <span class="text-danger" id="lead_voivodeship_error" style="display:none;">Województwo musi posiadać co
+                    najmniej 4 litery.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Obywatelstwo-->
+                {{ form_label(form.nationality, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.nationality) }}
+                <span class="text-danger" id="lead_nationality_error" style="display:none;">Obywatelstwo musi posiadać
+                    co najmniej 2 litery.</span>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <!-- Ilość pracowników -->
+                {{ form_label(form.numberOfEmployees, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.numberOfEmployees) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Miesięczne koszta stałe -->
+                {{ form_label(form.monthlyCosts, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.monthlyCosts) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Szacowane miesięczne koszta dodatkowe -->
+                {{ form_label(form.estimatedMonthlyCosts, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.estimatedMonthlyCosts) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Średnie roczne przychody -->
+                {{ form_label(form.fixedAnnualIncome, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.fixedAnnualIncome) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Jakie miała notowania przez ostatnie 3 miesiące, +rosnące/-malejące (jeśli jest na giełdzie) -->
+                {{ form_label(form.stockQuotes, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.stockQuotes) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <div class="form-group">
+                <!-- Planowane inwestycje -->
+                {{ form_label(form.planingInvestments, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.planingInvestments) }}
+                <span class="text-danger" id="" style="display:none;">.</span>
+            </div>
+
+            <label id="adresscoresp_form_label" for="adresscoresp_form">Jeżeli adres korespondencyjny jest inny niż
+                zamieszkania</label>
+            <input type="checkbox" id="adresscoresp_form">
+            <div id="aderssCoresp" style="display:none;">
+
+                <div class="form-group">
+                    <!-- Adres do Korespondencji (ulica i number budynku)-->
+                    {{ form_label(form.correspondenceAddressStreetAndNumber, null, {'label_attr': {'class': 'control-label'}})
+                    }}
+                    {{ form_widget(form.correspondenceAddressStreetAndNumber) }}
+                    <span class="text-danger" id="lead_correspondenceAddressStreetAndNumber_error"
+                        style="display:none;">Wpisz poprawny adres (przykład Prawnicza 30).</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Kod pocztowy do Korespondencji-->
+                    {{ form_label(form.correspondenceAddressPostCode, null, {'label_attr': {'class': 'control-label'}})
+                    }}
+                    {{ form_widget(form.correspondenceAddressPostCode) }}
+                    <span class="text-danger" id="lead_correspondenceAddressPostCode_error" style="display:none;">Kod
+                        pocztowy trzeba zapisac w formacie 01-123.</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Miejscowość do Korespondencji-->
+                    {{ form_label(form.correspondenceAddressCity, null, {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.correspondenceAddressCity) }}
+                    <span class="text-danger" id="lead_correspondenceAddressCity_error"
+                        style="display:none;">Miejscowość
+                        musi posiadać co najmniej 2 litery.</span>
+                </div>
+
+                <div class="form-group">
+                    <!-- Województwo do Korespondencji-->
+                    {{ form_label(form.correspondenceVoivodeship, null, {'label_attr': {'class': 'control-label'}}) }}
+                    {{ form_widget(form.correspondenceVoivodeship) }}
+                    <span class="text-danger" id="lead_correspondenceVoivodeship_error"
+                        style="display:none;">Województwo
+                        musi posiadać co najmniej 4 litery.</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <!-- Aktywny?-->
+                {{ form_label(form.isActive, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.isActive) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Notatka-->
+                {{ form_label(form.note, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.note) }}
+            </div>
+
+            <div class="form-group">
+                <!-- Submit Button -->
+                {{ form_label(form.save, null, {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_widget(form.save) }}
+            </div>
+
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+    {% endblock %}
+
+    {% block stylesheets %}
+    <link href="{{ asset( '../css/newClient.css' ) }}" rel="stylesheet" type="text/css" />
+
+    {% endblock %}
+
+
+    {% block javascripts %}
+
+    <script src="{{ asset('../js/global.js') }}"></script>
+    <script src="{{ asset('../js/newClient.js') }}"></script>
+
+
+    {% endblock %}
