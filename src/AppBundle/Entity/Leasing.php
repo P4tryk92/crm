@@ -3,14 +3,19 @@
 namespace AppBundle\Entity;
 
 /**
- * Credit
+ * Leasing
  */
-class Credit
+class Leasing
 {
     /**
      * @var integer
      */
     private $id;
+
+    /**
+     * @var string
+     */
+    private $leasingThing;
 
     /**
      * @var float
@@ -38,14 +43,9 @@ class Credit
     private $bankName;
 
     /**
-     * @var float
+     * @var \AppBundle\Entity\Company
      */
-    private $profitMargin;
-
-    /**
-     * @var \AppBundle\Entity\Lead
-     */
-    private $lead;
+    private $company;
 
 
     /**
@@ -59,11 +59,35 @@ class Credit
     }
 
     /**
+     * Set leasingThing
+     *
+     * @param string $leasingThing
+     *
+     * @return Leasing
+     */
+    public function setLeasingThing($leasingThing)
+    {
+        $this->leasingThing = $leasingThing;
+
+        return $this;
+    }
+
+    /**
+     * Get leasingThing
+     *
+     * @return string
+     */
+    public function getLeasingThing()
+    {
+        return $this->leasingThing;
+    }
+
+    /**
      * Set amount
      *
      * @param float $amount
      *
-     * @return Credit
+     * @return Leasing
      */
     public function setAmount($amount)
     {
@@ -87,7 +111,7 @@ class Credit
      *
      * @param \DateTime $grantingDate
      *
-     * @return Credit
+     * @return Leasing
      */
     public function setGrantingDate($grantingDate)
     {
@@ -111,7 +135,7 @@ class Credit
      *
      * @param \DateTime $repaymentDate
      *
-     * @return Credit
+     * @return Leasing
      */
     public function setRepaymentDate($repaymentDate)
     {
@@ -135,7 +159,7 @@ class Credit
      *
      * @param integer $monthlyInstallment
      *
-     * @return Credit
+     * @return Leasing
      */
     public function setMonthlyInstallment($monthlyInstallment)
     {
@@ -159,7 +183,7 @@ class Credit
      *
      * @param string $bankName
      *
-     * @return Credit
+     * @return Leasing
      */
     public function setBankName($bankName)
     {
@@ -179,64 +203,11 @@ class Credit
     }
 
     /**
-     * Set profitMargin
-     *
-     * @param float $profitMargin
-     *
-     * @return Credit
-     */
-    public function setProfitMargin($profitMargin)
-    {
-        $this->profitMargin = $profitMargin;
-
-        return $this;
-    }
-
-    /**
-     * Get profitMargin
-     *
-     * @return float
-     */
-    public function getProfitMargin()
-    {
-        return $this->profitMargin;
-    }
-
-    /**
-     * Set lead
-     *
-     * @param \AppBundle\Entity\Lead $lead
-     *
-     * @return Credit
-     */
-    public function setLead(\AppBundle\Entity\Lead $lead = null)
-    {
-        $this->lead = $lead;
-
-        return $this;
-    }
-
-    /**
-     * Get lead
-     *
-     * @return \AppBundle\Entity\Lead
-     */
-    public function getLead()
-    {
-        return $this->lead;
-    }
-    /**
-     * @var \AppBundle\Entity\Company
-     */
-    private $company;
-
-
-    /**
      * Set company
      *
      * @param \AppBundle\Entity\Company $company
      *
-     * @return Credit
+     * @return Leasing
      */
     public function setCompany(\AppBundle\Entity\Company $company = null)
     {
