@@ -1,127 +1,163 @@
 {% extends 'base.html.twig' %}
 
-{% block body %} 
-<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('lead_new') }}">Dodaj nowego klienta</a></button>
+{% block body %}
 
-    
-    <div class="table-responsive">   
-    <table class="table table-striped" style="font-size:12px;">
-        <thead>
-            <tr>
-                <th>Liczba klientów<br />({{ leads|length }})</th>
-                <th>Id</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Pesel</th>
-                <th>Numer telefonu</th>
-                <th>Zarobki</th>
-                <th>Kredyt od</th>
-                <th>Wysokość kredytu</th>
-                <th>Wysokość raty kredytu</th>
-                <th>Bank</th>
-                <th>Status</th>
-                <th>Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for lead in leads %}
-                <tr class="{{lead.id}}-row">
-                    <th scope="row">{{ loop.index + (page - 1 ) * perPage }}</th>
-                        
-                    
-                    <td>
-                        {{lead.id}}
-                    </td>
-                    <td>
-                        {{lead.firstName}}
-                    </td>
-                    <td>
-                        {{lead.lastName}}
-                    </td>
-                    <td>
-                        {{lead.pin}}
-                    </td>
-                    <td>
-                        {{lead.phoneNumber}}
-                    </td>
-                    <td>
-                        {{lead.fixedSalaryNet}}
-                    </td>
-                    {% set credit = lead.credits.last() %}
-                    {% if credit %}
-                        <td>
-                            {{ credit.grantingDate|date("d-m-Y") }}
-                            {% if lead.credits|length > 1 %}
-                            <span data-toggle="tooltip" data-placement="top" title="Klient posiada więcej kredytów">
-                                    <i class="fas fa-exclamation-circle h5 text-danger ml-2" ></i>
-                            </span>
-                            {% endif %}
-                        </td>
-                        <td>
-                            {{ credit.amount }}
-                        </td>
-                        <td>
-                            {{ credit.monthlyInstallment }}
-                        </td>
-                        <td>
-                            {{ credit.bankName }}
-                        </td>
-                        <td>
-                            {% if lead.isActive==1 %}
-                            Aktywny
-                            {% else %}
-                            Nie aktywny
-                            {% endif %} 
-                        </td>
-                    {% else %}
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                    {% endif %}
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
-                                    href="{{ url('lead_edit', {id: lead.id}) }}">Edytuj</a></button>
-                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{ url('lead_remove', {id: lead.id}) }}">Usuń</a>
-                                <a class="dropdown-item" href="{{ url('credit_index', {id: lead.id, type: 'klient'}) }}">Kredyt</a>
-                                <a class="dropdown-item" href="{{ url('shares_index', {id: lead.id}) }}">Akcje</a>
-                                <a class="dropdown-item" href="{{ url('wealth_index', {id: lead.id}) }}">Majątek</a>
-                                <a class="dropdown-item" href="{{ url('wealth_by_appraiser_index', {id: lead.id}) }}">Majątek wyceniony przez rzeczoznawcę</a>
-                            </div> 
+<div class="row">
+    <div class="card col-md-12 p-3" data-wow-delay="0.3s" data-stateful="true" data-inner-id="lobicard-parent-default">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Klienci</h4>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="media">
+
+                <div class="media-body">
+                    <div class="p-3 border bg-light">
+
+                        <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white"
+                                href="{{ url('lead_new') }}">Dodaj nowego klienta</a></button>
+
+
+                        <div class="table-responsive">
+                            <table class="table table-striped" style="font-size:12px;">
+                                <thead>
+                                    <tr>
+                                        <th>Liczba klientów<br />({{ leads|length }})</th>
+                                        <th>Id</th>
+                                        <th>Imię</th>
+                                        <th>Nazwisko</th>
+                                        <th>Pesel</th>
+                                        <th>Numer telefonu</th>
+                                        <th>Zarobki</th>
+                                        <th>Kredyt od</th>
+                                        <th>Wysokość kredytu</th>
+                                        <th>Wysokość raty kredytu</th>
+                                        <th>Bank</th>
+                                        <th>Status</th>
+                                        <th>Akcje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for lead in leads %}
+                                    <tr class="{{lead.id}}-row">
+                                        <th scope="row">{{ loop.index + (page - 1 ) * perPage }}</th>
+
+
+                                        <td>
+                                            {{lead.id}}
+                                        </td>
+                                        <td>
+                                            {{lead.firstName}}
+                                        </td>
+                                        <td>
+                                            {{lead.lastName}}
+                                        </td>
+                                        <td>
+                                            {{lead.pin}}
+                                        </td>
+                                        <td>
+                                            {{lead.phoneNumber}}
+                                        </td>
+                                        <td>
+                                            {{lead.fixedSalaryNet}}
+                                        </td>
+                                        {% set credit = lead.credits.last() %}
+                                        {% if credit %}
+                                        <td>
+                                            {{ credit.grantingDate|date("d-m-Y") }}
+                                            {% if lead.credits|length > 1 %}
+                                            <span data-toggle="tooltip" data-placement="top"
+                                                title="Klient posiada więcej kredytów">
+                                                <i class="fas fa-exclamation-circle h5 text-danger ml-2"></i>
+                                            </span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {{ credit.amount }}
+                                        </td>
+                                        <td>
+                                            {{ credit.monthlyInstallment }}
+                                        </td>
+                                        <td>
+                                            {{ credit.bankName }}
+                                        </td>
+                                        <td>
+                                            {% if lead.isActive==1 %}
+                                            Aktywny
+                                            {% else %}
+                                            Nie aktywny
+                                            {% endif %}
+                                        </td>
+                                        {% else %}
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        {% endif %}
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger btn-sm"><a
+                                                        class="text-white"
+                                                        href="{{ url('lead_edit', {id: lead.id}) }}">Edytuj</a></button>
+                                                <button type="button"
+                                                    class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('lead_remove', {id: lead.id}) }}">Usuń</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('credit_index', {id: lead.id, type: 'klient'}) }}">Kredyt</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('shares_index', {id: lead.id}) }}">Akcje</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('wealth_index', {id: lead.id}) }}">Majątek</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('wealth_by_appraiser_index', {id: lead.id}) }}">Majątek
+                                                        wyceniony przez rzeczoznawcę</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do
+                                csv</button>
                         </div>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do csv</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
-         
+
+
+
+
 {% endblock %}
 
 {% block stylesheets %}
-    
+
 {% endblock %}
 
 {% block javascripts %}
 <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-          })
-         
-          var data = [
-          ['id','imie','nazwisko','pesel','nrtel','zarobki','kredyt od','wysokosc kredytu','wysokosc raty kredytu','bank','status'],
-          {% for lead in leads %}
-          {% set credit = lead.credits.last() %}
-            ['{{lead.id}}', '{{lead.firstName}}', '{{lead.lastName}}','{{lead.pin}}','{{lead.phoneNumber}}','{{lead.fixedSalaryNet}}',{% if credit %},'{{ credit.amount }}','{{ credit.monthlyInstallment }}','{{ credit.bankName }}',{% else %},'','','',{% endif %}'{{lead.isActive}}'],
-            
-        {% endfor %}
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    var data = [
+        ['id', 'imie', 'nazwisko', 'pesel', 'nrtel', 'zarobki', 'kredyt od', 'wysokosc kredytu', 'wysokosc raty kredytu', 'bank', 'status'],
+        {% for lead in leads %}
+    {% set credit = lead.credits.last() %}
+    ['{{lead.id}}', '{{lead.firstName}}', '{{lead.lastName}}', '{{lead.pin}}', '{{lead.phoneNumber}}', '{{lead.fixedSalaryNet}}', {% if credit %}, '{{ credit.amount }}', '{{ credit.monthlyInstallment }}', '{{ credit.bankName }}', {% else %}, '', '', '', {% endif %}'{{lead.isActive}}'],
+
+    {% endfor %}
         ];
 
 </script>
