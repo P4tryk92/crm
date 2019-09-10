@@ -436,6 +436,9 @@ body.lobicard-minimized{
 .dropdown-menu>li>a[data-func=unpin]{
     display:none;
 }
+.dropdown-menu>li>a[data-func=expand]{
+    display:none;
+}
 .lobicard.card-expanded,.lobicard.card-minimized.card-unpin,.lobicard.card-unpin{
 	margin-bottom:0
 }
