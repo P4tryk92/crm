@@ -48,9 +48,22 @@
             {% endfor %}
         </tbody>
     </table>
+    <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do csv</button>
+</div>
+{% endblock %}
 
-    {% endblock %}
+{% block stylesheets %}
 
-    {% block stylesheets %}
+{% endblock %}
+{% block javascripts %}
+<script>
+          var data = [
+          ['rodzaj','wartosc'],
+          {% for wealth in wealthsByAppraiser %}
+            ['{{wealth.type}}','{{wealth.estimatedValuation}}'],
+            
+        {% endfor %}
+        ];
 
-    {% endblock %}
+</script>
+{% endblock %}

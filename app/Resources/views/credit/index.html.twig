@@ -1,71 +1,112 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('credit_new', {type: type, id: lead.id}) }}">Dodaj nowy kredyt</a></button>
-<div>
-    Kredyty
-</div>
-<br>
-<div class="table-responsive">
-    <table class="table table-striped" style="font-size:12px;">
-        <thead>
-            <tr>
-                <th style="width:100px;">Liczba kredytów<br />({{ paginator|length }})</th>
-                <th style="width:100px;">Kwota</th>
-                <th style="width:150px;">Data udzielenia kredytu</th>
-                <th style="width:150px;">Data spłaty kredytu</th>
-                <th style="width:150px;">Wysokość miesięcznej raty</th>
-                <th style="width:150px;">Nazwa banku</th>
-                <th style="width:150px;">Marża w %</th>
-                <th style="width:150px;">Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for credit in paginator %}
-            <tr class="{{credit.id}}-row">
-                <th scope="row">
-                    {{ loop.index + (page - 1 ) * perPage }}
-                </th>
-                <td>
-                    {{credit.amount}}
-                </td>
-                <td>
-                    {{credit.grantingDate|date("d-m-Y")}}
-                </td>
-                <td>
-                    {{credit.repaymentDate|date("d-m-Y")}}
-                </td>
-                <td>
-                    {{credit.monthlyInstallment}}
-                </td>
-                <td>
-                    {{credit.bankName}}
-                </td>
-                <td>
-                    {{credit.profitMargin}}
-                </td>
-                <td>
 
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
-                                href="{{ url('credit_edit', {type: type, id: lead.id, creditId: credit.id}) }}">Edytuj</a></button>
-                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item"
-                                href="{{ url('credit_remove', {type: type, id: lead.id, creditId: credit.id}) }}">Usuń</a>
+<div class="row">
+    <div class="card col-md-12 p-3" data-wow-delay="0.3s" data-stateful="true" data-inner-id="lobicard-parent-default">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Kredyty</h4>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="media">
+
+                <div class="media-body">
+                    <div class="p-3 border bg-light">
+
+                        <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white"
+                                href="{{ url('credit_new', {type: type, id: lead.id}) }}">Dodaj nowy kredyt</a></button>
+
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped" style="font-size:12px;">
+                                <thead>
+                                    <tr>
+                                        <th style="width:100px;">Liczba kredytów<br />({{ paginator|length }})</th>
+                                        <th style="width:100px;">Kwota</th>
+                                        <th style="width:150px;">Data udzielenia kredytu</th>
+                                        <th style="width:150px;">Data spłaty kredytu</th>
+                                        <th style="width:150px;">Wysokość miesięcznej raty</th>
+                                        <th style="width:150px;">Nazwa banku</th>
+                                        <th style="width:150px;">Marża w %</th>
+                                        <th style="width:150px;">Akcje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for credit in paginator %}
+                                    <tr class="{{credit.id}}-row">
+                                        <th scope="row">
+                                            {{ loop.index + (page - 1 ) * perPage }}
+                                        </th>
+                                        <td>
+                                            {{credit.amount}}
+                                        </td>
+                                        <td>
+                                            {{credit.grantingDate|date("d-m-Y")}}
+                                        </td>
+                                        <td>
+                                            {{credit.repaymentDate|date("d-m-Y")}}
+                                        </td>
+                                        <td>
+                                            {{credit.monthlyInstallment}}
+                                        </td>
+                                        <td>
+                                            {{credit.bankName}}
+                                        </td>
+                                        <td>
+                                            {{credit.profitMargin}}
+                                        </td>
+                                        <td>
+
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger btn-sm"><a
+                                                        class="text-white"
+                                                        href="{{ url('credit_edit', {type: type, id: lead.id, creditId: credit.id}) }}">Edytuj</a></button>
+                                                <button type="button"
+                                                    class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('credit_remove', {type: type, id: lead.id, creditId: credit.id}) }}">Usuń</a>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do
+                                csv</button>
                         </div>
-                    </div>
 
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 {% endblock %}
 
 {% block stylesheets %}
 
+{% endblock %}
+{% block javascripts %}
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    var data = [
+        ['kwota', 'data udzielenia kredytu', 'data splaty kredytu', 'wysykosc miesiecznej raty', 'nazwa banku', 'marza w %'],
+        {% for credit in paginator %}
+    ['{{credit.amount}}', '{{credit.grantingDate|date("d-m-Y")}}', '{{credit.repaymentDate|date("d-m-Y")}}', '{{credit.monthlyInstallment}}', '{{credit.bankName}}', '{{credit.profitMargin}}'],
+
+        {% endfor %}
+        ];
+
+</script>
 {% endblock %}

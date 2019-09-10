@@ -1,59 +1,93 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="row">
+    <div class="card col-md-12 p-3" data-wow-delay="0.3s" data-stateful="true" data-inner-id="lobicard-parent-default">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Akcje</h4>
+            </div>
+        </div>
+        <div class="card-block">
+            <div class="media">
 
-<button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white" href="{{ url('shares_new', {id: lead.id}) }}">Dodaj nowe akcje</a></button>
+                <div class="media-body">
+                    <div class="p-3 border bg-light">
 
-<div>
-    Akcje:
-</div>
-<br>
-<div class="table-responsive">
-    <table class="table table-striped" style="font-size:12px;">
-        <thead>
-            <tr>
-                <th style="width:100px;">Liczba<br />({{ shares|length }})</th>
-                <th style="width:150px;">Nazwa i rodzaj</th>
-                <th style="width:150px;">Ilość</th>
-                <th style="width:150px;">Wartość</th>
-                <th style="width:150px;">Akcje</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for share in shares %}
-            <tr class="{{share.id}}-row">
-                <th scope="row">
-                    {{ loop.index + (page - 1 ) * perPage }}
-                </th>
-                <td>
-                    {{share.nameAndType}}
-                </td>
-                <td>
-                    {{share.numberOfSharesHeld}}
-                </td>
-                <td>
-                    {{share.value}}
-                </td>
-                <td>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-danger btn-sm"><a class="text-white"
-                                href="{{ url('shares_edit', {leadId: lead.id, sharesId: share.id}) }}">Edytuj</a></button>
-                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item"
-                                href="{{ url('shares_remove', {leadId: lead.id, sharesId: share.id}) }}">Usuń</a>
+                        <button type="button" class="btn btn-danger btn-sm mb-2"><a class="text-white"
+                                href="{{ url('shares_new', {id: lead.id}) }}">Dodaj nowe akcje</a></button>
+
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-striped" style="font-size:12px;">
+                                <thead>
+                                    <tr>
+                                        <th style="width:100px;">Liczba<br />({{ shares|length }})</th>
+                                        <th style="width:150px;">Nazwa i rodzaj</th>
+                                        <th style="width:150px;">Ilość</th>
+                                        <th style="width:150px;">Wartość</th>
+                                        <th style="width:150px;">Akcje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for share in shares %}
+                                    <tr class="{{share.id}}-row">
+                                        <th scope="row">
+                                            {{ loop.index + (page - 1 ) * perPage }}
+                                        </th>
+                                        <td>
+                                            {{share.nameAndType}}
+                                        </td>
+                                        <td>
+                                            {{share.numberOfSharesHeld}}
+                                        </td>
+                                        <td>
+                                            {{share.value}}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger btn-sm"><a
+                                                        class="text-white"
+                                                        href="{{ url('shares_edit', {leadId: lead.id, sharesId: share.id}) }}">Edytuj</a></button>
+                                                <button type="button"
+                                                    class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="{{ url('shares_remove', {leadId: lead.id, sharesId: share.id}) }}">Usuń</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <button class="btn btn-danger btn-sm" onclick="putsontocsv()">Eksportuj listę do
+                                csv</button>
                         </div>
+
                     </div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
 
-    {% endblock %}
+    </div>
+</div>
+{% endblock %}
 
-    {% block stylesheets %}
+{% block stylesheets %}
 
-    {% endblock %}
+{% endblock %}
+{% block javascripts %}
+<script>
+    var data = [
+        ['nazwa', 'ilosc', 'wartosc'],
+        {% for share in shares %}
+    ['{{share.nameAndType}}', '{{share.numberOfSharesHeld}}', '{{share.value}}'],
+
+        {% endfor %}
+        ];
+
+</script>
+{% endblock %}
