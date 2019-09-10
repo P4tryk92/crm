@@ -47,7 +47,7 @@ function validate_email() {
     }
 }
 
-//data urodzenia
+//data krótsza
 function validate_date() {
     if (!this.value.match(/^(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/i)) {
         this.className = "form-control is-invalid";
@@ -59,7 +59,7 @@ function validate_date() {
     }
 }
 
-//data urodzenia
+//data możliwa odległa
 function validate_datLonger() {
     if (!this.value.match(/^(19|20|21)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])$/i)) {
         this.className = "form-control is-invalid";
@@ -135,6 +135,54 @@ function validate_numberBigerNull() {
 // liczba z możliwością 0
 function validate_numberCanBeNull() {
     if (this.value.length < 1 || this.value < 0) {
+        this.className = "form-control is-invalid";
+        document.getElementById(this.id + "_error").style.display = "block"
+    }
+    else {
+        this.className = "form-control is-valid";
+        document.getElementById(this.id + "_error").style.display = "none"
+    }
+}
+
+// liczba od minus do plus
+function validate_numberCanBeLowerNull() {
+    if (this.value.length < 1) {
+        this.className = "form-control is-invalid";
+        document.getElementById(this.id + "_error").style.display = "block"
+    }
+    else {
+        this.className = "form-control is-valid";
+        document.getElementById(this.id + "_error").style.display = "none"
+    }
+}
+
+// nip
+function validate_nip() {
+    if (this.value.length != 10 || this.value < 0) {
+       this.className = "form-control is-invalid";
+       document.getElementById(this.id + "_error").style.display = "block"
+   }
+   else {
+       this.className = "form-control is-valid";
+       document.getElementById(this.id + "_error").style.display = "none"
+   }
+}
+
+// regon
+function validate_regon() {
+    if (this.value.length == 9 ||this.value.length == 14 || this.value < 0) {
+        this.className = "form-control is-valid";
+       document.getElementById(this.id + "_error").style.display = "none"
+   }
+   else {
+       this.className = "form-control is-invalid";
+   document.getElementById(this.id + "_error").style.display = "block"
+   }
+}
+
+// adres strony internetowej
+function validate_site() {
+    if (!this.value.match(/^([w]{3})+\.([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/)) {
         this.className = "form-control is-invalid";
         document.getElementById(this.id + "_error").style.display = "block"
     }
