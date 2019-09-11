@@ -3,9 +3,9 @@
 {% block body %}
 
 {% if edit is defined %}
-    <h3>Edycja majątku </h3>
+<h3>Edycja majątku </h3>
 {% else %}
-    <h3>Dodawanie nowego majątku </h3>
+<h3>Dodawanie nowego majątku </h3>
 {% endif %}
 
 <div class="container">
@@ -16,11 +16,15 @@
                 <!-- Rodzaj majątku -->
                 {{ form_label(form.type, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.type) }}
+                <span class="text-danger" id="wealth_type_error" style="display:none;">Rodzaj majątku musi posiadać co
+                    najmniej 2 litery.</span>
             </div>
             <div class="form-group">
                 <!-- Szacowana wartość -->
                 {{ form_label(form.estimatedValuation, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.estimatedValuation, { 'type':'number' }) }}
+                <span class="text-danger" id="wealth_estimatedValuation_error" style="display:none;">Wartość musi być
+                    większa od 0.</span>
             </div>
             <div class="form-group">
                 <!-- Submit Button -->
@@ -37,5 +41,8 @@
 
 {% endblock %}
 {% block javascripts %}
+
+<script src="{{ asset('../js/global.js') }}"></script>
+<script src="{{ asset('../js/newWealt.js') }}"></script>
 
 {% endblock %}

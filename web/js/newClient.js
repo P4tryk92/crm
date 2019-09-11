@@ -64,6 +64,9 @@ document.getElementById("lead_correspondenceAddressCity").addEventListener("chan
 // walidacja korespondencyjnego województwa
 document.getElementById("lead_correspondenceVoivodeship").addEventListener("change", validate_voivodeship);
 
+// walidacja daty zamieszkania pod aktualnym adresem
+document.getElementById("lead_dateFromLivesAtCurrentAddress").addEventListener("change", validate_date);
+
 // walidacja branży w której pracuje
 document.getElementById("lead_workIndustry").addEventListener("change", validate_string);
 
@@ -93,6 +96,15 @@ document.getElementById("lead_startWorkContractDate").addEventListener("change",
 
 // walidacja daty końca umowy
 document.getElementById("lead_endWorkContractDate").addEventListener("change", validate_datLonger);
+
+// walidacja daty początkowej zobowiązań alimentowych
+document.getElementById("lead_alimonyDateFrom").addEventListener("change", validate_date);
+
+// walidacja daty końca zobowiązania alimentowego
+document.getElementById("lead_alimonyDateTo").addEventListener("change", validate_datLonger);
+
+// walidacja kwoty zobowiązania alimentowego
+document.getElementById("lead_alimonyAmount").addEventListener("change", validate_numberBigerNull);
 
 // ukrywanie checkboxa odnośnie alimentów
 document.getElementById("lead_alimony").addEventListener("click", validate_alimony);
