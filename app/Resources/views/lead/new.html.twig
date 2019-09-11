@@ -240,7 +240,8 @@
                 <!-- Data zawarcia umowy-->
                 {{ form_label(form.startWorkContractDate, null, {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_widget(form.startWorkContractDate) }}
-                <span class="text-danger" id="lead_startWorkContractDate_error" style="display:none;">Wpisz poprawną datę
+                <span class="text-danger" id="lead_startWorkContractDate_error" style="display:none;">Wpisz poprawną
+                    datę
                     (25.12.2000)</span>
             </div>
 
@@ -262,18 +263,24 @@
                     <!-- Zobowiązanie alimentowe data od-->
                     {{ form_label(form.alimonyDateFrom, null, {'label_attr': {'class': 'control-label'}}) }}
                     {{ form_widget(form.alimonyDateFrom) }}
+                    <span class="text-danger" id="lead_alimonyDateFrom_error" style="display:none;">Wpisz poprawną datę
+                        (25.12.2000)</span>
                 </div>
 
                 <div class="form-group">
                     <!-- Zobowiązanie alimentowe data do-->
                     {{ form_label(form.alimonyDateTo, null, {'label_attr': {'class': 'control-label'}}) }}
                     {{ form_widget(form.alimonyDateTo) }}
+                    <span class="text-danger" id="lead_alimonyDateTo_error" style="display:none;">Wpisz poprawną datę
+                        (25.12.2000)</span>
                 </div>
 
                 <div class="form-group">
                     <!-- Wysokość zobowiązania-->
                     {{ form_label(form.alimonyAmount, null, {'label_attr': {'class': 'control-label'}}) }}
                     {{ form_widget(form.alimonyAmount) }}
+                    <span class="text-danger" id="lead_alimonyAmount_error" style="display:none;">Kwota zobowiązania
+                        musi być wyższa od 0.</span>
                 </div>
             </div>
             <label id="adresscoresp_form_label" for="adresscoresp_form">Jeżeli adres korespondencyjny jest inny niż
@@ -322,6 +329,9 @@
                     {{ form_label(form.dateFromLivesAtCurrentAddress, null, {'label_attr': {'class': 'control-label'}})
                     }}
                     {{ form_widget(form.dateFromLivesAtCurrentAddress) }}
+                    <span class="text-danger" id="lead_dateFromLivesAtCurrentAddress_error" style="display:none;">Wpisz
+                        poprawną datę
+                        (25.12.2000)</span>
                 </div>
             </div>
 
