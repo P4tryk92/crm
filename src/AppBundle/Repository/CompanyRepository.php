@@ -10,4 +10,66 @@ namespace AppBundle\Repository;
  */
 class CompanyRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllCompanies()
+    {
+        $em = $this->getEntityManager();
+
+        $qb = $em->createQueryBuilder()
+                 ->select('e')
+                 ->from('AppBundle:Company', 'e');
+        
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getActiveCompanies()
+    {
+        $em = $this->getEntityManager();
+
+        $qb = $em->createQueryBuilder()
+                 ->select('e')
+                 ->from('AppBundle:Company', 'e')
+                 ->where('e.isActive = 1');
+        
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getBySearchForm($company)
+    {
+        $em = $this->getEntityManager();
+
+        $qb = $em->createQueryBuilder('e')
+        ->select('e')
+        ->from('AppBundle:Company', 'e')
+        ->orderBy('e.created_at','DESC');
+
+        if ($company->getCompanyName()) {
+            $qb->andWhere('e.companyName = :companyName')
+            ->setParameter('companyName', $company->getCompanyName());
+        } 
+        if ($company->getNip()) {
+            $qb->andWhere('e.nip = :nip')
+            ->setParameter('nip', $company->getNip());
+        } 
+        if ($company->getPhoneNumber()) {
+            $qb->andWhere('e.phoneNumber = :phoneNumber')
+            ->setParameter('phoneNumber', $company->getPhoneNumber());
+        } 
+        if ($company->getId()) {
+            $qb->andWhere('e.id = :id')
+            ->setParameter('id', $company->getId());
+        } 
+        if ($company->getFixedAnnualIncomeFrom()) {
+            $qb->andWhere('e.fixedAnnualIncome >= :fixedAnnualIncomeFrom')
+            ->setParameter('fixedAnnualIncomeFrom', $company->getFixedAnnualIncomeFrom());
+        } 
+        if ($company->getfixedAnnualIncomeTo()) {
+            $qb->andWhere('e.fixedAnnualIncome <= :fixedAnnualIncomeTo')
+            ->setParameter('fixedAnnualIncomeTo', $company->getfixedAnnualIncomeTo());
+        } 
+        // dump($company.credit);
+        
+        $qb->getQuery();
+
+        return $qb;
+    }
 }

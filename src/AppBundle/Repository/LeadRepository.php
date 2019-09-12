@@ -32,4 +32,48 @@ class LeadRepository extends \Doctrine\ORM\EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+
+    public function getBySearchForm($lead)
+    {
+        $em = $this->getEntityManager();
+
+        $qb = $em->createQueryBuilder('e')
+        ->select('e')
+        ->from('AppBundle:Lead', 'e')
+        ->orderBy('e.created_at','DESC');
+
+        if ($lead->getFirstName()) {
+            $qb->andWhere('e.firstName = :firstName')
+            ->setParameter('firstName', $lead->getFirstName());
+        } 
+        if ($lead->getLastName()) {
+            $qb->andWhere('e.lastName = :lastName')
+            ->setParameter('lastName', $lead->getLastName());
+        } 
+        if ($lead->getPin()) {
+            $qb->andWhere('e.pin = :pin')
+            ->setParameter('pin', $lead->getPin());
+        } 
+        if ($lead->getPhoneNumber()) {
+            $qb->andWhere('e.phoneNumber = :phoneNumber')
+            ->setParameter('phoneNumber', $lead->getPhoneNumber());
+        } 
+        if ($lead->getId()) {
+            $qb->andWhere('e.id = :id')
+            ->setParameter('id', $lead->getId());
+        } 
+        if ($lead->getFixedSalaryNetFrom()) {
+            $qb->andWhere('e.fixedSalaryNet >= :fixedSalaryNetFrom')
+            ->setParameter('fixedSalaryNetFrom', $lead->getFixedSalaryNetFrom());
+        } 
+        if ($lead->getFixedSalaryNetTo()) {
+            $qb->andWhere('e.fixedSalaryNet <= :fixedSalaryNetTo')
+            ->setParameter('fixedSalaryNetTo', $lead->getFixedSalaryNetTo());
+        } 
+        // dump($lead.credit);
+        
+        $qb->getQuery();
+
+        return $qb;
+    }
 }

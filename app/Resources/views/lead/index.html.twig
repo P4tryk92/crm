@@ -9,6 +9,12 @@
                 <h4>Klienci</h4>
             </div>
         </div>
+
+
+
+
+
+
         <div class="card-block">
             <div class="media">
 
@@ -21,21 +27,42 @@
 
                         <div class="table-responsive">
                             <table class="table table-striped" style="font-size:12px;">
-                                <thead>
+                                <thead> {{ form_start(form) }}
                                     <tr>
                                         <th>Liczba klientów<br />({{ leads|length }})</th>
-                                        <th>Id</th>
-                                        <th>Imię</th>
-                                        <th>Nazwisko</th>
-                                        <th>Pesel</th>
-                                        <th>Numer telefonu</th>
-                                        <th>Zarobki</th>
+                                        <th>{{ form_label(form.id) }}</th>
+                                        <th>{{ form_label(form.firstName) }}</th>
+                                        <th>{{ form_label(form.lastName) }}</th>
+                                        <th>{{ form_label(form.pin) }}</th>
+                                        <th>{{ form_label(form.phoneNumber) }}</th>
+                                        <th>{{ form_label(form.fixedSalaryNetFrom) }}</th>
                                         <th>Kredyt od</th>
                                         <th>Wysokość kredytu</th>
                                         <th>Wysokość raty kredytu</th>
                                         <th>Bank</th>
-                                        <th>Status</th>
-                                        <th>Akcje</th>
+                                        <th>Aktywny</th>
+
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>{{ form_widget(form.id) }}</th>
+                                        <th>{{ form_widget(form.firstName) }}</th>
+                                        <th>{{ form_widget(form.lastName) }}</th>
+                                        <th>{{ form_widget(form.pin) }}</th>
+                                        <th>{{ form_widget(form.phoneNumber) }}</th>
+                                        <th>{{ form_widget(form.fixedSalaryNetFrom) }}
+                                            {{ form_widget(form.fixedSalaryNetTo) }}</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>{{ form_widget(form.isActive) }}</th>
+                                        <th>{{ form_label(form.search) }}
+                                            {{ form_widget(form.search) }}
+                                            <input type="button" class="btn btn-warning btn-sm mt-1 text-white"
+                                                onclick="this.form.reset()" value="Wyczyść"></th>
+                                        </th>
+                                        {{ form_end(form) }}
                                     </tr>
                                 </thead>
                                 <tbody>
