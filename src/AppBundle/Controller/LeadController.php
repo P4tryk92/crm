@@ -6,9 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Entity\Lead;
+use AppBundle\Entity\SearchLeadCompany;
 use AppBundle\Entity\WealthByAppraiser;
 use AppBundle\Form\LeadType;
+use AppBundle\Form\LeadSearchType;
 use AppBundle\Form\WealthByAppraiserType;
 use AppBundle\Controller\BaseController;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -19,19 +20,34 @@ class LeadController extends BaseController
     {
         $this->setPerPage();
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Lead')
-                    ->createQueryBuilder('l')
-                    ->orderBy('l.created_at','DESC')
-                    ->getQuery()
-                    ->setFirstResult(($page-1) * $this->perPage)
-                    ->setMaxResults($this->perPage);
+        $lead = new SearchLeadCompany();
 
-        $paginator = new Paginator($query);
+        $form = $this->createForm(LeadSearchType::class, $lead, ['allow_extra_fields' => true]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $lead = $form->getData();
+            $query = $this->getDoctrine()->getRepository('AppBundle:Lead')->getBySearchForm($lead);
+            $query->setFirstResult(($page-1) * $this->perPage)
+            ->setMaxResults($this->perPage);
+
+        } else {
+            $query = $this->getDoctrine()->getRepository('AppBundle:Lead')
+                ->createQueryBuilder('l')
+                ->orderBy('l.created_at','DESC')
+                ->getQuery()
+                ->setFirstResult(($page-1) * $this->perPage)
+                ->setMaxResults($this->perPage);
+        }
         
+        $paginator = new Paginator($query);
+
         return $this->render('lead/index.html.twig', [
             'leads' => $paginator,
             'perPage' => $this->perPage,
             'page' => $page,
+            'form' => $form->createView(),
         ]);
     }
 

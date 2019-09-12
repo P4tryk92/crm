@@ -17,22 +17,63 @@
                                 href="{{ url('company_new') }}">Dodaj nową firmę</a></button>
 
                         <div class="table-responsive">
+
                             <table class="table table-striped" style="font-size:12px;">
-                                <thead>
+                                <thead>{{ form_start(form) }}
                                     <tr>
+
                                         <th>Liczba firm<br />({{ companies|length }})</th>
-                                        <th>Id</th>
-                                        <th>Nazwa firmy</th>
+                                        <th>{{ form_label(form.id) }}
+                                        </th>
+                                        <th>{{ form_label(form.companyName)}}
+                                        </th>
                                         <th>Branża</th>
-                                        <th>NIP</th>
-                                        <th>Numer telefonu</th>
-                                        <th>Roczne zarobki</th>
+                                        <th>{{ form_label(form.nip) }}
+                                        </th>
+                                        <th>{{ form_label(form.phoneNumber)}}
+                                        </th>
+                                        <th>
+                                            {{ form_label(form.fixedAnnualIncomeFrom)}}
+
+                                        </th>
                                         <th>Kredyt od</th>
                                         <th>Wysokość kredytu</th>
                                         <th>Wysokość raty kredytu</th>
                                         <th>Bank</th>
-                                        <th>Status</th>
-                                        <th>Akcje</th>
+                                        <th>{{ form_label(form.isActive)}}
+                                        </th>
+
+                                        <th> {{ form_label(form.search) }}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>
+                                            {{ form_widget(form.id) }}</th>
+                                        <th>
+                                            {{ form_widget(form.companyName) }}</th>
+                                        <th></th>
+                                        <th>
+                                            {{ form_widget(form.nip) }}</th>
+                                        <th>
+                                            {{ form_widget(form.phoneNumber) }}</th>
+                                        <th>
+
+                                            {{ form_widget(form.fixedAnnualIncomeFrom) }}
+                                            {{ form_widget(form.fixedAnnualIncomeTo) }}</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>
+                                            {{ form_widget(form.isActive) }}</th>
+
+                                        <th>
+                                            {{ form_widget(form.search) }}
+                                            <input type="button" class="btn btn-warning btn-sm mt-1 text-white"
+                                                onclick="this.form.reset()" value="Wyczyść"></th>
+
+                                        {{ form_end(form) }}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,6 +128,7 @@
                                         <td>-</td>
                                         <td>-</td>
                                         {% endif %}
+
                                         <td>
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-danger btn-sm"><a
@@ -111,6 +153,7 @@
                                                 </div>
                                             </div>
                                         </td>
+
                                     </tr>
                                     {% endfor %}
                                 </tbody>

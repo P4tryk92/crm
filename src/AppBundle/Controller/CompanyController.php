@@ -7,8 +7,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Company;
+use AppBundle\Entity\SearchLeadCompany;
 use AppBundle\Entity\WealthByAppraiser;
 use AppBundle\Form\CompanyType;
+use AppBundle\Form\CompanySearchType;
 use AppBundle\Form\WealthByAppraiserType;
 use AppBundle\Controller\BaseController;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -19,12 +21,26 @@ class CompanyController extends BaseController
     {
         $this->setPerPage();
 
-        $query = $this->getDoctrine()->getRepository('AppBundle:Company')
-                    ->createQueryBuilder('l')
-                    ->orderBy('l.created_at','DESC')
-                    ->getQuery()
-                    ->setFirstResult(($page-1) * $this->perPage)
-                    ->setMaxResults($this->perPage);
+        $company = new SearchLeadCompany();
+
+        $form = $this->createForm(CompanySearchType::class, $company, ['allow_extra_fields' => true]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $company = $form->getData();
+            $query = $this->getDoctrine()->getRepository('AppBundle:Company')->getBySearchForm($company);
+            $query->setFirstResult(($page-1) * $this->perPage)
+            ->setMaxResults($this->perPage);
+        
+        } else {
+            $query = $this->getDoctrine()->getRepository('AppBundle:Company')
+                ->createQueryBuilder('l')
+                ->orderBy('l.created_at','DESC')
+                ->getQuery()
+                ->setFirstResult(($page-1) * $this->perPage)
+                ->setMaxResults($this->perPage);
+        }
 
         $paginator = new Paginator($query);
         
@@ -32,6 +48,7 @@ class CompanyController extends BaseController
             'companies' => $paginator,
             'perPage' => $this->perPage,
             'page' => $page,
+            'form' => $form->createView(),
         ]);
     }
 
