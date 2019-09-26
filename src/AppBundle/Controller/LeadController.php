@@ -13,6 +13,7 @@ use AppBundle\Form\LeadSearchType;
 use AppBundle\Form\WealthByAppraiserType;
 use AppBundle\Controller\BaseController;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use AppBundle\Entity\Lead;
 
 class LeadController extends BaseController
 {
