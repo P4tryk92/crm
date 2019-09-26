@@ -79,11 +79,20 @@ document.getElementById("quotes_form").addEventListener("click", validate_stQuot
 
 // ukrywanie checkboxa korespondencyjnego
 function validate_stQuotes() {
+    let stockQuotesBlock=document.getElementById("stock_quotes")
+    let inputsinBlock=stockQuotesBlock.querySelectorAll("input")
+
     if (this.checked == true) {
-        document.getElementById("stock_quotes").style.display = ""
+        stockQuotesBlock.style.display = ""
+        for(let i = 0; i<inputsinBlock.length;i++){
+            inputsinBlock[i].required= true
+        }
     }
     else {
-        document.getElementById("stock_quotes").style.display = "none"
+        stockQuotesBlock.style.display = "none"
+        for(let i = 0; i<inputsinBlock.length;i++){
+            inputsinBlock[i].required= false
+        }
     }
 }
 
@@ -93,33 +102,42 @@ document.getElementById("adresscoresp_form").addEventListener("click", validate_
 
 // ukrywanie checkboxa korespondencyjnego
 function validate_aderssCoresp() {
+    let addressBlock=document.getElementById("aderssCoresp")
+    let inputsinBlock=addressBlock.querySelectorAll("input")
+    
     if (this.checked == true) {
-        document.getElementById("aderssCoresp").style.display = ""
+        addressBlock.style.display = ""
+        for(let i = 0; i<inputsinBlock.length;i++){
+            inputsinBlock[i].required= true
+        }
     }
     else {
-        document.getElementById("aderssCoresp").style.display = "none"
+        addressBlock.style.display = "none"
+        for(let i = 0; i<inputsinBlock.length;i++){
+            inputsinBlock[i].required= false
+            }
     }
 }
 
 
-//alert buttona
-$('#company_save').on('click', function (e) {
-    var error = 0;
-    var errorInvalid = 0;
-    $('.form-group input').each(function (index) {
-        if (!$(this).val()) {
-            error++;
-        }
-        else if ($(this).hasClass('is-invalid')) {
-            errorInvalid++;
-        }
-    });
-    if (error) {
-        e.preventDefault();
-        alert('Uzupełnij wszystkie pola');
-    }
-    else if (errorInvalid) {
-        e.preventDefault();
-        alert('Uzupełnij prawidłowo wszystkie pola');
-    }
-});
+// //alert buttona
+// $('#company_save').on('click', function (e) {
+//     var error = 0;
+//     var errorInvalid = 0;
+//     $('.form-group input').each(function (index) {
+//         if (!$(this).val()) {
+//             error++;
+//         }
+//         else if ($(this).hasClass('is-invalid')) {
+//             errorInvalid++;
+//         }
+//     });
+//     if (error) {
+//         e.preventDefault();
+//         alert('Uzupełnij wszystkie pola');
+//     }
+//     else if (errorInvalid) {
+//         e.preventDefault();
+//         alert('Uzupełnij prawidłowo wszystkie pola');
+//     }
+// });
