@@ -73,11 +73,14 @@ document.getElementById("company_correspondenceAddressCity").addEventListener("c
 // walidacja województwo
 document.getElementById("company_correspondenceVoivodeship").addEventListener("change", validate_voivodeship);
 
-
-//checkboks adreess
+//checkbox gielda
 document.getElementById("quotes_form").addEventListener("click", validate_stQuotes);
 
-// ukrywanie checkboxa korespondencyjnego
+//checkbox adreess korespondencyjny
+document.getElementById("adresscoresp_form").addEventListener("click", validate_aderssCoresp);
+
+
+// ukrywanie checkboxa gielda
 function validate_stQuotes() {
     let stockQuotesBlock=document.getElementById("stock_quotes")
     let inputsinBlock=stockQuotesBlock.querySelectorAll("input")
@@ -97,8 +100,6 @@ function validate_stQuotes() {
 }
 
 
-//checkbos adreess
-document.getElementById("adresscoresp_form").addEventListener("click", validate_aderssCoresp);
 
 // ukrywanie checkboxa korespondencyjnego
 function validate_aderssCoresp() {
